@@ -1,0 +1,108 @@
+/* Fonts
+--------------------------------------------- */
+
+/*
+@font-face {
+  font-family: 'mb_empire_bookregular';
+  src: url('../fonts/m-b_creative_-_mbempire-book-webfont.woff2') format('woff2'),
+  url('../fonts/m-b_creative_-_mbempire-book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+*/
+
+/* ## Typographical Elements
+--------------------------------------------- */
+
+html {
+  font-size: $global-font-size;
+}
+
+
+body {
+  background-color: $background-default;
+  color: $color-default;
+  font-family: $font-default;
+  font-size: $global-font-size;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: $line-height-default;
+  margin: 0;
+}
+
+a,
+button,
+input:focus,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+textarea:focus,
+.button,
+.gallery img {
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition:    all 0.1s ease-in-out;
+  -ms-transition:     all 0.1s ease-in-out;
+  -o-transition:      all 0.1s ease-in-out;
+  transition:         all 0.1s ease-in-out;
+}
+
+a {
+  color: $color-anchor-default;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: darken($color-anchor-default, 40%);
+  text-decoration: none;
+}
+
+p {
+  margin: 0 0 to-em(28px);
+  padding: 0;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+hr {
+  border: 0;
+  border-collapse: collapse;
+  border-top: 1px solid $color-border-default;
+  clear: both;
+  margin: 1em 0;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+blockquote,
+cite,
+em,
+i {
+  font-style: italic;
+}
+
+blockquote {
+  margin: to-em(40px);
+}
+
+blockquote::before {
+  content: "\201C";
+  display: block;
+  font-size: to-em(30px);
+  height: 0;
+  left: to-em(-20px);
+  position: relative;
+  top: to-em(-10px);
+}

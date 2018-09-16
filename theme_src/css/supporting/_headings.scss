@@ -1,0 +1,39 @@
+
+/* ## Headings
+--------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-default;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 to-em(10px);
+}
+
+h1 {
+  font-size: to-em(36px);
+}
+
+h2 {
+  font-size: to-em(30px);
+}
+
+h3 {
+  font-size: to-em(24px);
+}
+
+h4 {
+  font-size: to-em(20px);
+}
+
+h5 {
+  font-size: to-em(18px);
+}
+
+h6 {
+  font-size: to-em(16px);
+}

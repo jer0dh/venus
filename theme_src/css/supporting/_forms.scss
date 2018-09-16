@@ -1,0 +1,93 @@
+
+/* ## Forms
+--------------------------------------------- */
+
+input,
+select,
+textarea {
+  background-color: $background-default;
+  border: 1px solid $color-border-default;
+  color: $color-default;
+  font-size: to-em(18px);
+  font-weight: 400;
+  padding: to-em(16px, 18px);
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid #999;
+  outline: none;
+}
+
+input[type="checkbox"],
+input[type="image"],
+input[type="radio"] {
+  width: auto;
+}
+
+@include placeholder {
+  color: $color-default;
+  opacity: 1;
+}
+
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button {
+  background-color: map-get($theme-colors, 'primary');
+  color: $btn-default-color;
+  cursor: pointer;
+  font-size: to-em(16px);
+
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: normal;
+  vertical-align: middle;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+  @include transition($btn-transition);
+
+  // Share hover and focus styles
+  @include hover-focus {
+    text-decoration: none;
+  }
+  &:hover,
+  &:focus {
+    background-color: lighten($btn-default-bg, 30%);
+    color: $btn-default-color;
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+    // Disabled comes first so active can properly restyle
+    &.disabled,
+    &:disabled {
+      opacity: $btn-disabled-opacity;
+      @include box-shadow(none);
+    }
+
+    // Opinionated: add "hand" cursor to non-disabled .btn elements
+    &:not(:disabled):not(.disabled) {
+      cursor: pointer;
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      background-image: none;
+      @include box-shadow($btn-active-box-shadow);
+
+      &:focus {
+        @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+      }
+    }
+}
+
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button {
+  display: none;
+}

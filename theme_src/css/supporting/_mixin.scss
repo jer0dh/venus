@@ -1,0 +1,173 @@
+/**
+Some helpful mixins
+
+ */
+
+
+/*
+Here's a mixin from Web Designer Issue 266, 2017
+
+
+ */
+
+/* create a map of default breakpoints */
+$grid-breakpoints: (
+        xs: $screen-xs-min,
+        sm: $screen-sm-min,
+        md: $screen-md-min,
+        lg: $screen-lg-min
+) !default;
+
+$global-font-size: 16px !default;
+
+/* Takes $value and converts it to em using the $global-font-size.
+   if $base is included, it checks if it's a px and if so, it returns the $value / $base * 1em
+   if $base is em, it assumes the $base was created by the $global-font-size.
+
+ */
+@function to-em($value, $base: false) {
+  @if index('px', unit($value)) != null {
+    @if $base {  /* if a base font size was included */
+
+      @if index('px', unit($base)) != null {
+        @return $value / $base * 1em;
+      } @else {  /* assume em value used and that it is based off of global-font-size */
+        @return $value / ($base * $global-font-size) * 1em;
+      }
+
+    }
+    @return $value / $global-font-size * 1em;
+  } @else if index('em', unit($value)) != null {
+      @return $value;
+  }
+  @error "'#{$value}' needs to be px";
+}
+
+
+/* returns the em of the $value if it's a number.
+   otherwise checks to see if it's either xs, sm, md, lg listed in $breakpoints.  If so it returns the em of that breakpoint.
+ */
+@function mq-process($value){
+  @if type-of($value) == 'number' {
+
+    @return to-em($value);
+
+  } @else if map-has_key($grid-breakpoints, $value) {
+      $value: map_get($grid-breakpoints, $value);
+      @return to-em($value);
+  } @else {
+    @error "`#{$value}' doesn't exist in $breakpoints"
+  }
+}
+
+
+/* create a media query using em
+   $from - min-width
+   $until - max-width
+   $and -
+ */
+@mixin mq(
+  $from: false,
+  $until: false,
+  $and: false,
+  $type: false
+) {
+  @if $from == false and $until == false and $and == false and $type == false {
+    @error( "You haven't passed anything")
+  }
+
+  @if $from {
+    $from: mq-process($from);
+  }
+
+  @if $until {
+    $until: mq-process($until);
+    $until: $until - .01em;
+  }
+
+  $mq: false;
+
+  @if $from and $until {
+    $mq: '(min-width: #{$from}) and (max-width: #{$until})';
+  } @else if $from {
+    $mq: '(min-width: #{$from})'
+  } @else if $until {
+    $mq: '(max-width: #{$until})'
+  }
+
+  @if $and and $mq {
+    $mq: '#{$mq} and #{$and}'
+  } @else if $and {
+    $mq: '#{$and}'
+  }
+
+  @if $type and $mq {
+    $mq: '#{$type} and #{$mq}'
+  } @else if $type {
+    $mq: '#{$type}'
+  }
+
+  @media #{$mq} {
+    @content;
+  }
+
+}
+
+/*
+From: https://css-tricks.com/snippets/sass/strip-unit-function/
+ */
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+/*
+Here's a mixin from Web Designer Issue 266, 2017
+
+This will allow the font to adjust in a linear fashion
+This is based on screen width 100vw.
+
+ */
+
+
+@mixin fluid-text (
+  $min-font-size,
+  $max-font-size,
+  $break-start,
+  $break-end
+) {
+
+  $m: (strip-unit($max-font-size) - strip-unit($min-font-size)) / (strip-unit($break-end) - strip-unit($break-start));
+  $b: #{$min-font-size - $m * $break-start};
+  $mx: #{$m * 100vw};
+
+  font-size: #{$min-font-size};
+
+  @media (min-width: #{$break-start}) {
+    font-size: calc(#{$mx} + #{$b});
+  }
+
+  @media (min-width: #{$break-end}) {
+    font-size: #{$max-font-size};
+  }
+}
+
+
+/* Placeholder
+Altered from: https://stackoverflow.com/questions/17181849/placeholder-mixin-scss-css
+--------------------------------------------- */
+
+@mixin placeholder() {
+   // &::placeholder                   {@content} - doubled the output of this mixin..even when changing name
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}

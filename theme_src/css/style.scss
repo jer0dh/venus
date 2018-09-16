@@ -1,0 +1,186 @@
+
+/* # Table of Contents
+
+/* Boostrap Variables
+ UnComment if using bootstrap.
+ and you need access to bootstrap variables early on.
+ Override anything you need in the vars.scss file.
+-----------------------------------------------------------*/
+/* @import "supporting/bootstrap/variables.scss */
+
+
+/* Variables
+NOTE: to override bootstrap vars, don't include the !default when assigning values.
+------------------------------------------------------------ */
+@import "supporting/vars";
+
+@import "supporting/mixin";
+
+/* Include-media
+-------------------------------------------------------- */
+@import "supporting/include-media";
+
+
+/* Resets
+	- Baseline Normalize
+	- Box Sizing
+	- Float Clearing
+------------------------------------------------------------ */
+@import "supporting/resets";
+
+
+/* Typographical
+------------------------------------------------------------ */
+@import "supporting/typographical";
+
+
+/* Headings
+------------------------------------------------------------ */
+@import "supporting/headings";
+
+
+/*Bootstrap 4 css
+----------------------------------------------------------- */
+@import "supporting/bootstrap-cust";
+
+
+
+/* Tables and Screen Reader
+------------------------------------------------------------ */
+@import "supporting/tableAndScreenReader";
+
+
+/* Structure and Layouts
+	- Site Containers
+
+------------------------------------------------------------ */
+@import "supporting/structureAndLayout";
+
+
+
+/* Forms
+------------------------------------------------------------ */
+@import "supporting/forms";
+
+
+
+/* Objects and Gallery
+------------------------------------------------------------ */
+@import "supporting/objectsAndGallery";
+
+
+/* Common Classes
+	- Avatar
+	- Genesis
+	- Search Form
+	- Titles
+	- WordPress
+------------------------------------------------------------ */
+@import "supporting/commonClasses";
+
+
+
+/* Widgets
+	- Featured Content
+------------------------------------------------------------ */
+@import "supporting/widgets";
+
+
+
+/* Plugins and Skip Links
+- Plugins
+	- Genesis eNews Extended
+	- Jetpack
+- Skip Links
+------------------------------------------------------------ */
+@import "supporting/pluginsAndSkipLinks";
+
+
+
+/* Site-Header
+	- Title Area
+	- Widget Area
+------------------------------------------------------------ */
+@import "supporting/siteheader";
+
+
+
+/* Site Navigation
+	- Accessible Menu
+	- Site Header Navigation
+	- Primary and Secondary Navigation
+------------------------------------------------------------ */
+@import "supporting/nav";
+
+
+/* Responsive Nav
+----------------------------------------------------------- */
+@import "supporting/nav_responsive";
+
+
+
+/* Content Area
+	- Entries
+	- Entry Meta
+	- Pagination
+	- Comments
+------------------------------------------------------------ */
+@import "supporting/contentArea";
+
+
+
+
+/* Sidebars
+------------------------------------------------------------ */
+@import "supporting/sidebars";
+
+
+/* Site Footer
+------------------------------------------------------------ */
+@import "supporting/sitefooter";
+
+
+
+/* Media Queries
+------------------------------------------------------------ */
+@import "supporting/mediaQueries";
+
+
+
+/* Gutenberg styles
+------------------------------------------------------------*/
+@import "supporting/gutenberg";
+
+
+
+/* Sticky Nav
+------------------------------------------------------------ */
+@import "supporting/nav-sticky";
+
+
+/* Genesis Base
+------------------------------------------------------------ */
+@import "supporting/printStyles";
+
+
+/* Sticky
+------------------------------------------------------------- */
+@import "supporting/sticky";
+
+
+/* Bootstrap css
+NOTE: if you changed anything that is used in other variables (like grid), you will want to load the bootstrap/variables.scss file
+again as now it will have your overrides from the vars.scss file.
+------------------------------------------------------------
+@import "supporting/bootstrap";
+*/
+
+/* TESTING */
+/*
+.test {
+  font-size: to-em(16px);
+  font-size: to-em(32px);
+  font-size: to-em(20px, 20px);
+  color: rgba( #ffffff, 0.74);
+}*/
+

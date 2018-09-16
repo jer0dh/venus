@@ -1,0 +1,14 @@
+
+/* # Site Footer
+---------------------------------------------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid $color-border-default;
+  font-size: 1rem;
+  line-height: 1;
+  padding: to-em(40px) 0;
+
+  p {
+    margin-bottom: 0;
+  }
+}
