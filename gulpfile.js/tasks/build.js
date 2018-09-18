@@ -19,7 +19,7 @@ gulp.task('build', function(cb) {
         'styles-sass-max',
 
         // PHPLint the php
-        'phplint',
+        //'phplint',
 
         // After removing in dev code and applying Gulp templating, move all php files to destination
         'php-template-copy',

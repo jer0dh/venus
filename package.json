@@ -1,6 +1,6 @@
 {
   "name": "theme-from-venus",
-  "version": "1.0.3-262",
+  "version": "1.0.3-304",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^4.1.0",
     "include-media": "^1.4.9",
-    "phplint": "^1.7.4",
+    "phplint": "^2.0.1",
     "require-dir": "^1.0.0",
     "rimraf": "^2.6.2",
     "run-sequence": "^2.2.1",

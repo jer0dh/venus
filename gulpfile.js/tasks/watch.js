@@ -18,7 +18,7 @@ gulp.task('watch-javascript-app-tasks', function(cb) {
 });
 
 gulp.task('watch-php-tasks', function(cb) {
-   return gulpSequence('bump-and-push', 'phplint','php-template-copy', 'php-deploy', cb);
+   return gulpSequence('bump-and-push','php-template-copy', 'php-deploy', cb);
 });
 
 gulp.task('watch-images-tasks', function(cb) {

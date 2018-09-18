@@ -154,9 +154,5 @@ genesis_set_default_layout( 'full-width-content' );
 remove_action('genesis_after_header', 'genesis_do_nav' );
 add_action( 'genesis_header', 'genesis_do_nav', 11 );
 
-//* Add stickiness to header
-add_filter( 'genesis_attr_site-header', 'gs_add_sticky_class');
-function gs_add_sticky_class($attributes) {
-	$attributes['class'] .= ' sticky';
-	return $attributes;
-}
+//* Add helpers
+include_once get_stylesheet_directory() . '/libs/multipage.php';
