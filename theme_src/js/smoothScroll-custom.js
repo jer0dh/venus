@@ -1,13 +1,13 @@
-(function($){
+(function ($) {
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         // Select all links with hashes
         $('a[href*="#"]')
         // Remove links that don't actually link to anything
             .not('[href="#"]')
             .not('[href="#0"]')
-            .click(function(event) {
+            .click(function (event) {
                 // On-page links
                 if (
                     location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
@@ -24,7 +24,7 @@
                         $('html, body').animate({
                             scrollTop: target.offset().top - 90
 
-                        }, 1000, function() {
+                        }, 1000, function () {
                             history.replaceState({}, "", target.selector);
                             // Callback after animation
                             // Must change focus!
@@ -33,9 +33,10 @@
                             if ($target.is(":focus")) { // Checking if the target was focused
                                 return false;
                             } else {
-                                $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
                                 $target.focus(); // Set focus again
-                            };
+                            }
+                            ;
                         });
                     }
                 }

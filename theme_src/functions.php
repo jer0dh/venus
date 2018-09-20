@@ -1,6 +1,8 @@
 <?php
 
-if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 
 //* Start the Genesis engine
@@ -19,7 +21,7 @@ remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
 // The page template will enqueue registered scripts only if they are needed
 add_action( 'wp_enqueue_scripts', 'gtl_enqueue_scripts_styles' );
 
-define('GS_MAIN_SCRIPT', 'gs_scripts');
+define( 'GS_MAIN_SCRIPT', 'gs_scripts' );
 
 function gtl_enqueue_scripts_styles() {
 
@@ -30,7 +32,7 @@ function gtl_enqueue_scripts_styles() {
 
 	wp_enqueue_style( 'gtl_css', get_stylesheet_directory_uri() . '<% if(production){%>/css/style.min.css<% } else { %>/css/style.css<% } %>', array(), $version );
 
-    wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Muli:400,600,700,800', array() );
+	wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Muli:400,600,700,800', array() );
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '<% if(production){%>.min<% } %>';  //Gulptask in dev environment will put in '.min' if dev is set for production
 
@@ -45,12 +47,14 @@ function gtl_enqueue_scripts_styles() {
 	);
 
 }
+
 // Update CSS within in Admin
 function gtl_admin_style() {
 	$version = wp_get_theme()->Version;
-	wp_enqueue_style('admin-styles', get_stylesheet_directory_uri() . '/css/admin-style.min.css', array(), $version );
+	wp_enqueue_style( 'admin-styles', get_stylesheet_directory_uri() . '/css/admin-style.min.css', array(), $version );
 }
-add_action('admin_enqueue_scripts', 'gtl_admin_style');
+
+add_action( 'admin_enqueue_scripts', 'gtl_admin_style' );
 
 // Define our responsive menu settings.
 function genesis_sample_responsive_menu_settings() {
@@ -64,7 +68,7 @@ function genesis_sample_responsive_menu_settings() {
 			'combine' => array(
 				'.nav-primary'
 			),
-			'others'  => array('.nav-secondary'),
+			'others'  => array( '.nav-secondary' ),
 		),
 	);
 
@@ -76,18 +80,24 @@ function genesis_sample_responsive_menu_settings() {
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
 
 //* Add Accessibility support
-add_theme_support( 'genesis-accessibility', array( 'headings', 'drop-down-menu',  'search-form', 'skip-links', 'rems' ) );
+add_theme_support( 'genesis-accessibility', array(
+	'headings',
+	'drop-down-menu',
+	'search-form',
+	'skip-links',
+	'rems'
+) );
 
 //* Add viewport meta tag for mobile browsers
 add_theme_support( 'genesis-responsive-viewport' );
 
-add_theme_support( 'header-image');
+add_theme_support( 'header-image' );
 
 //* Add support for custom background
 add_theme_support( 'custom-background' );
 
 //* Add support for post-thumbnails
-add_theme_support('post-thumbnails');
+add_theme_support( 'post-thumbnails' );
 
 //* Gutenberg wide images support - still need to add css to support
 
@@ -116,13 +126,13 @@ function gtl_do_footer(){
 */
 
 add_theme_support( 'genesis-structural-wraps', array(
-	 'header',
+	'header',
 	'menu-primary',
 	'menu-secondary',
 	'site-inner',
 	'footer-widgets',
 	'footer',
-	) );
+) );
 
 /*
 /* add sidebar
@@ -151,7 +161,7 @@ genesis_unregister_layout( 'sidebar-content-sidebar' );
 genesis_set_default_layout( 'full-width-content' );
 
 //* Moving Nav to header
-remove_action('genesis_after_header', 'genesis_do_nav' );
+remove_action( 'genesis_after_header', 'genesis_do_nav' );
 add_action( 'genesis_header', 'genesis_do_nav', 11 );
 
 //* Add helpers
