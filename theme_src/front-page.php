@@ -28,13 +28,14 @@ function venus_add_multipage_js() {
 function venus_add_page_info() {
 	global $venus_test;
 
+
 	$var = get_queried_object();
 
 	$id = sanitize_title_with_dashes( $var->post_title );
 
 	wp_localize_script( 'multipage', 'wp_multipage', array( 'id' => $id ) );
 
-	var_dump($venus_test);
+	//var_dump($venus_test);
 }
 
 

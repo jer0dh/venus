@@ -15,27 +15,33 @@ function venus_multipage_custom_loop() {
 // Get a list of pages to show
 	$pages = wp_get_nav_menu_items( 'multipage' );
 
-	$ids = array_map( function ( $a ) {
+	if( $pages ) {
+		$ids = array_map( function ( $a ) {
 
-		return $a->object_id;
-	}, $pages );
+			return $a->object_id;
+		}, $pages );
 
-	$wp_query = new WP_Query( array( 'post_type' => 'page', 'post__in' => $ids, 'orderby' => 'post__in' ) );
+		$wp_query = new WP_Query( array( 'post_type' => 'page', 'post__in' => $ids, 'orderby' => 'post__in' ) );
 
-	genesis_standard_loop();
+	}
+		genesis_standard_loop();
 
-	wp_reset_query();
+		wp_reset_query();
+
 }
 
-add_filter('wp_nav_menu_objects', 'venus_test_menu', 10, 2);
+add_filter('wp_nav_menu_objects', 'venus_multipage_menu_links', 10, 2);
 global $venus_test;
-function venus_test_menu( $menus, $args ) {
+function venus_multipage_menu_links( $menus, $args ) {
 	global $venus_test;
 
-	if ( isset( $args ) ) {
+	$multipages_menu = wp_get_nav_menu_items( 'multipage' );
+
+	if ( isset( $args ) && $multipages_menu ) {
+
 		if ( isset( $args->theme_location ) || $args->theme_location !== '' ) {
 
-			$multipages_menu = wp_get_nav_menu_items( 'multipage' );
+
 			$multipages_urls = array_map( function ( $menu ) {
 				return $menu->url;
 			}, $multipages_menu );
