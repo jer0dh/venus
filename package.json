@@ -1,6 +1,6 @@
 {
   "name": "theme-from-venus",
-  "version": "1.0.3-304",
+  "version": "1.0.3-356",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
@@ -64,6 +64,7 @@
   ],
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [
+    "theme_src/js/smoothScroll-custom.js",
     "theme_src/js/scripts.js"
   ]
 }
