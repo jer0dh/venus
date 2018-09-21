@@ -132,6 +132,7 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
             $GsBus.onP('mainMenuInit', _mainMenuEvents);
             $GsBus.triggerP('mainMenuInit');
         }
+        $('.menu-item a[href^="#"]').on('click', _mainMenuTriggered);
     };
 
     function _mainMenuEvents() {
@@ -273,7 +274,12 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
         $this.toggleClass('activated');
         $this.next('nav').slideToggle('fast');
     }
+window.mainMenuTrigger = _mainMenuTriggered;
 
+    function _mainMenuTriggered() {
+        const mainMenu = $('.' + mainMenuButtonClass);
+        _mainMenuTrigger(null, mainMenu);
+    }
     /**
      * Action for submenu toggles.
      */

@@ -32,9 +32,9 @@ function scrollFunction() {
     }
 }
 
-let debouncedScroll = debounce(scrollFunction,250);
+let debouncedScroll = new Debouncer (scrollFunction);
 
-window.addEventListener('scroll', debouncedScroll, false);
+window.addEventListener('scroll', debouncedScroll.handleEvent.bind(debouncedScroll));
 
 /* END Setup button to go to top
 ------------------------------------------------------------------------

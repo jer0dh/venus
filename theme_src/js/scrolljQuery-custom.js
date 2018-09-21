@@ -1,6 +1,20 @@
 (function ($) {
 
+    const fixedHeader = document.querySelector('.site-header');
+
     $(document).ready(function () {
+
+        // Check to see if this page called externally with a hash/bookmark in the url.  If so, scroll to bottom of fixed header
+        const loadedHash = window.location.hash;
+        if(loadedHash) {
+            let hashTop = document.querySelector(loadedHash);
+            $('html, body').animate({
+                scrollTop: hashTop.offsetTop - fixedHeader.offsetHeight
+
+            }, 1000);
+        }
+
+
 
         // Select all links with hashes
         $('a[href*="#"]')
@@ -22,7 +36,7 @@
                         // Only prevent default if animation is actually gonna happen
                         event.preventDefault();
                         $('html, body').animate({
-                            scrollTop: target.offset().top - 90
+                            scrollTop: target.offset().top - fixedHeader.offsetHeight
 
                         }, 1000, function () {
                           //  history.replaceState({}, "", target.selector);

@@ -1,9 +1,13 @@
 /* https://www.itsupportguides.com/knowledge-base/tech-tips-tricks/how-to-offset-anchor-tag-link-using-css/ */
-/*
 
-article[id]:before  {
+/* This css is applied to a non-relative url with a bookmark hash
+is used to access the page.  This isn't applied when a link
+is used to access a bookmark on the same page.
+ */
+/*article[id]:target:before  {
   content:"";
   display:block;
-  height:90px; !* fixed header height*!
-  margin:-90px 0 0; !* negative fixed header height *!
-}*/
+  height:90px;
+  margin:-90px 0 0;
+}
+*/
