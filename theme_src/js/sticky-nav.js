@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //  const originalBodyPadding = document.body.style.paddingTop;
 
     const stickyNav = new Debouncer( function() {
-        if(window.scrollY >= navTop) {
+        if(window.scrollY > navTop) {
             document.body.style.paddingTop = nav.offsetHeight + 'px';
             document.body.classList.add('fixed-nav');
         } else {
