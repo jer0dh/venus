@@ -48,14 +48,14 @@ $breakpoints: (
 $max_screen_width: 1500px;
 $wrap-padding: 40px;
 
-$site-header-min-height: to-em(160px);
-$site-header-padding-top: to-em(20px);
-$site-header-padding-bottom: to-em(20px);
+$site-header-min-height: 160px;
+$site-header-padding-top: 20px;
+$site-header-padding-bottom: 20px;
 
-$header-image-min-height: to-em(60px);
+$header-image-min-height: 20px;
 $sidebar-gutter: 20px;
 
-$main-margin-bottom: to-em(60px);
+$main-margin-bottom: 60px;
 
 
 $section-tb-padding: 70px;

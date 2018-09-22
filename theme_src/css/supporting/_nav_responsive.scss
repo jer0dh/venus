@@ -114,12 +114,12 @@ button.menu-toggle {
   }
 
   .bg-primary .nav-primary {
-    padding-bottom: 22px;
+    padding-bottom: 12px;
   }
 
   .nav-primary .genesis-nav-menu > li > a {
-    margin: 0 0 0 24px;
-    padding: 3rem 0;
+    margin: 0 0 0 14px;
+    padding: 1rem 1rem;
   }
 
   .nav-primary .genesis-nav-menu > li.left {
@@ -131,9 +131,3 @@ button.menu-toggle {
   }
 }
 
-@media only screen and (min-width: 1100px) {
-
-  .nav-primary .genesis-nav-menu > li > a {
-    margin: -2px 0 0 36px;
-  }
-}

@@ -3,7 +3,7 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-  min-height: $site-header-min-height;
+ // min-height: $site-header-min-height;
   border-bottom: 1px solid $color-border-default;
 
 }
@@ -51,10 +51,10 @@
 }
 
 .header-image .site-title > a {
-  background: url(images/logo.png) no-repeat left;
-  background-position: center top;
-
-  min-height: $header-image-min-height;
+  background: url(../images/logo.png) no-repeat;
+  background-position: left center;
+background-size: contain;
+  min-height: to-em($header-image-min-height);
   width: 100%;
 }
 

@@ -132,7 +132,9 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
             $GsBus.onP('mainMenuInit', _mainMenuEvents);
             $GsBus.triggerP('mainMenuInit');
         }
-        $('.menu-item a[href^="#"]').on('click', _mainMenuTriggered);
+        //TODO Need a way to close the mobile menu before a bookmark is scrolled to, so the height of the header is not the expanded version
+        //TODO   And we need to close the main menu after clicking one of these bookmarks.. but not hiding the menu on desktop version
+        //$('.menu-item a[href^="#"]').on('click', _mainMenuTriggered);
     };
 
     function _mainMenuEvents() {
@@ -274,7 +276,6 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
         $this.toggleClass('activated');
         $this.next('nav').slideToggle('fast');
     }
-window.mainMenuTrigger = _mainMenuTriggered;
 
     function _mainMenuTriggered() {
         const mainMenu = $('.' + mainMenuButtonClass);
