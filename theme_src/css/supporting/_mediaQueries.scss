@@ -3,51 +3,7 @@
 ---------------------------------------------------------------------------------------------------- */
 
 
-@include media('>=sm') { //576px
 
-  .genesis-nav-menu {
-    a,
-    & > .first > a,
-    & > .last > a {
-      padding: to-em(20px) to-em(16px);
-    }
-  }
-
-    .site-header .search-form {
-      margin: to-em(16px) auto;
-    }
-
-}
-
-
-@include mq($from: $screen-sm-min, $type: screen) { //768px
-
-
-  .site-header .title-area {
-    float: left;
-    text-align: left;
-  }
-  .site-header .search-form {
-    float: right;
-    text-align: left;
-  }
-  .site-description, .site-title {
-    text-align: left;
-  }
-  .header-image .site-title > a {
-    float: left;
-  }
-
-  .title-area {
-    width: 40%; //to-em( ($screen-sm-min - $sidespacing * 2) * 0.4 )
-  }
-
-  .site-header .widget-area {
-    float: right;
-    text-align: right;
-    width: 60%; //to-em( ($screen-sm-min - $sidespacing * 2) * 0.6 )
-  }
-}
 
 
 
