@@ -67,6 +67,7 @@
 background-size: contain;
   min-height: to-em($header-image-min-height);
   width: 100%;
+  display: inline-block;
 }
 
 .site-description {
