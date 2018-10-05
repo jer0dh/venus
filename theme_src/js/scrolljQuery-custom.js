@@ -35,20 +35,22 @@
                     if (target.length) {
                         // Only prevent default if animation is actually gonna happen
                         event.preventDefault();
-                        $('html, body').animate({
-                            scrollTop: target.offset().top - fixedHeader.offsetHeight
+                        //Adding timeout to help make sure menu closing is done so fixedHeader height is correct
+                        setTimeout(function() {
+                            $('html, body').animate({
+                                scrollTop: target.offset().top - fixedHeader.offsetHeight
 
-                        }, 1000, function () {
-                          //  history.replaceState({}, "", target.selector);
-                            // Callback after animation
-                            // Must change focus!
-                            var $target = $(target);
-                           $target.focus();
-                           if ($target.is(":focus")) { // Checking if the target was focused
-                               return false;
-                           }
+                            }, 1000, function () {
+                                //  history.replaceState({}, "", target.selector);
+                                // Callback after animation
+                                // Must change focus!
+                                var $target = $(target);
+                                $target.focus();
+                                if ($target.is(":focus")) { // Checking if the target was focused
+                                    return false;
+                                }
+                        })}, 200);
 
-                        });
                     }
                 }
             });

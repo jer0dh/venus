@@ -90,7 +90,7 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
         if ($(_getAllMenusArray()).length == 0) {
             return;
         }
-
+        // provide default icon classes if not supplied and then create toggleButtons object with buttons
         var menuIconClass = typeof genesisMenuParams.menuIconClass !== 'undefined' ? genesisMenuParams.menuIconClass : 'dashicons-before dashicons-menu',
             subMenuIconClass = typeof genesisMenuParams.subMenuIconClass !== 'undefined' ? genesisMenuParams.subMenuIconClass : 'dashicons-before dashicons-arrow-down-alt2',
             toggleButtons = {
@@ -135,6 +135,22 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
         //TODO Need a way to close the mobile menu before a bookmark is scrolled to, so the height of the header is not the expanded version
         //TODO   And we need to close the main menu after clicking one of these bookmarks.. but not hiding the menu on desktop version
         //$('.menu-item a[href^="#"]').on('click', _mainMenuTriggered);
+        $(_getMenuSelectorString(genesisMenus)).find('a[href^="#"]')
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .on('click', function(e) {
+
+            console.log('clicked');
+            var $this = $(this);
+            //Get the corresponding menu button
+            var $button = $this.parents('nav').siblings('.' + mainMenuButtonClass);
+            console.log($button);
+            if($button.length > 0) {
+               if( _maybeClose($button.attr('id')) ) {
+                   _mainMenuTrigger(null, $button);
+               }
+            }
+        });
     };
 
     function _mainMenuEvents() {
