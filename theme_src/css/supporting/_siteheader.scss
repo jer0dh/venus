@@ -14,6 +14,7 @@
   display: grid;
   grid-template-columns: calc(100% - 4rem) 4rem;
   grid-template-rows: 100% 100%;
+  align-items: center;
 
 
   .menu-toggle {
@@ -24,6 +25,8 @@
   .title-area {
     grid-column: 1;
     grid-row: 1;
+    display: flex;
+    align-items: center;
   }
 
   nav {
@@ -55,6 +58,7 @@
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
+
 }
 
 .header-image .site-title > a {
