@@ -5,6 +5,7 @@
 .site-header {
  // min-height: $site-header-min-height;
   border-bottom: 1px solid $color-border-default;
+  background: $white;
 
 }
 
@@ -16,6 +17,7 @@
   grid-template-rows: 100% 100%;
   align-items: center;
 
+  transition: padding 0.2s;
 
   .menu-toggle {
     grid-column: 2;
@@ -35,7 +37,10 @@
   }
 
 }
-
+.fixed-header .site-header > .wrap {
+  padding-top: #{$site-header-padding-top - 10px};
+  padding-bottom: #{$site-header-padding-bottom - 10px};
+}
 @include media('>mobileMenu') {
 
   .site-header > .wrap {

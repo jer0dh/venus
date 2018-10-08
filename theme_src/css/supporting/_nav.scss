@@ -11,9 +11,9 @@
 
   a {
     display: block;
-    color: $color-anchor-default;
+    color: $red;
     text-decoration: none;
-    //padding: to-em(15px) to-em(10px);
+    padding: 0.5em 0.2em;
   }
 
   a:hover,
@@ -21,7 +21,7 @@
   .current-menu-item > a,
   .sub-menu .current-menu-item > a:hover,
   .sub-menu .current-menu-item > a:focus {
-    color: lighten($color-anchor-default, 30%);
+    color: lighten($red, 30%);
   }
 
   .sub-menu {
@@ -39,6 +39,7 @@
 
     a {
 
+      padding: 0.5em 0.4em;
       @include media('>mobileMenu') {
         background-color: $background-default;
         padding: 0.5em 0.2em;

@@ -166,3 +166,6 @@ add_action( 'genesis_header', 'genesis_do_nav', 11 );
 
 //* Add helpers
 include_once get_stylesheet_directory() . '/libs/multipage.php';
+
+//* Add Portfolio CPT
+include_once get_stylesheet_directory() . '/libs/venus_portfolio_cpt.php';

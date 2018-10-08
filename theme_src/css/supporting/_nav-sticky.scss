@@ -1,11 +1,11 @@
-.admin-bar .fixed-nav .site-header{
+.admin-bar .fixed-header .site-header{
   top: 32px !important;
 }
 
 .site-header {
   width: calc( 100% + (100vw - 100%));
 }
-.fixed-nav .site-header {
+.fixed-header .site-header {
   position: fixed;
   top: 0;
   z-index: 99;
