@@ -124,15 +124,16 @@
 
 }
 
-
-.genesis-responsive-menu li,
-.genesis-responsive-menu li:hover {
-  width: 100%;
-  position: relative;
+.nav-primary {
+  display:none;
+  @include media('>mobileMenu') {
+    display: block;
+  }
 }
 
+//Responsive
 
-.nav-primary,  //.genesis-responsive-menu is added to menus via js
+ //.genesis-responsive-menu is added to menus via js
 .genesis-responsive-menu {
   display:none;
 

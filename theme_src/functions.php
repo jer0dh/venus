@@ -166,11 +166,3 @@ add_action( 'genesis_header', 'genesis_do_nav', 11 );
 
 //* Add helpers
 include_once get_stylesheet_directory() . '/libs/multipage.php';
-
-
-add_filter( 'genesis_attr_nav-primary', 'venus_add_class_nav_primary' );
-function venus_add_class_nav_primary( $attributes ) {
-
-	$attributes['class'] .= ' hide-nav';
-	return $attributes;
-}
