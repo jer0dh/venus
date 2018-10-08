@@ -123,3 +123,66 @@
 
 
 }
+
+.genesis-responsive-menu {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+
+  @include media('>mobileMenu') {
+    position: relative;
+    clip: auto;
+    height: auto; width: auto;
+    margin: initial; padding: initial; border: inherit;
+
+  }
+
+}
+
+.show-nav {
+  position: relative;
+  clip: auto;
+  height: auto; width: auto;
+  margin: initial; padding: initial; border: inherit;
+}
+.menu-toggle {
+  padding:0;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    color: #1a1a1a;
+    top: 0;
+    left:0;
+    display: inline-block;
+    font-size: 3rem;
+    margin: 0 auto;
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
+  }
+  &.activated:before {
+    content: "\f158";
+   /* right: 1.5rem;*/
+  }
+}
+
+.menu-toggle,
+.sub-menu-toggle {
+  background: transparent;
+}
+
+
+@include media('>mobileMenu') {
+  .menu-toggle,
+  .sub-menu-toggle {
+    display: none;
+    visibility: hidden;
+    color: transparent;
+  }
+}
