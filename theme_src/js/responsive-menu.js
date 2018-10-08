@@ -281,23 +281,13 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
      * Action to happen when the main menu button is clicked and this is triggered.
      */
     function _mainMenuTrigger(e, el) {
-        const $this = $(el);
-        const $nav = $this.next('nav');
+        var $this = $(el);
         _toggleAria($this, 'aria-pressed');
         _toggleAria($this, 'aria-expanded');
         $this.toggleClass('activated');
-        if($this.hasClass('activated')) {  //open
-            $nav.slideUp(0,function() {
-                $nav.addClass('show-nav')
-                    .slideDown('fast');
-            });
-        } else { //close
-            $nav.slideUp('fast',function() {
-                $nav.removeClass('show-nav')
-                    .slideDown(0);
-            });
+        $this.next('nav').slideToggle('fast');
         }
-    }
+
 
     /**
      * Action for submenu toggles.
@@ -305,28 +295,14 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
     function _submenuToggle() {
 
         var $this = $(this),
-            others = $this.closest('.menu-item').siblings(),
-            $subMenu = $this.next('.sub-menu');
+            others = $this.closest('.menu-item').siblings();
         _toggleAria($this, 'aria-pressed');
         _toggleAria($this, 'aria-expanded');
         $this.toggleClass('activated');
-        if($this.hasClass('activated')) {  //open
-            $submenu.slideUp(0,function() {
-                $subMenu.addClass('show-nav')
-                    .slideDown('fast');
-            });
-        } else { //close
-            $subMenu.slideUp('fast',function() {
-                $subMenu.removeClass('show-nav')
-                    .slideDown(0);
-            });
-        }
+        $this.next('.sub-menu').slideToggle('fast');
 
         others.find('.' + subMenuButtonClass).removeClass('activated').attr('aria-pressed', 'false');
-        others.find('.sub-menu').slideUp('fast',function() {
-            $(this).removeClass('show-nav')
-                .slideDown(0);
-        });
+        others.find('.sub-menu').slideUp('fast');
 
     }
 
@@ -410,8 +386,7 @@ var genesisMenuParams = typeof genesis_responsive_menu === 'undefined' ? '' : ge
             .attr('aria-pressed', false);
 
         $('.' + responsiveMenuClass + ', ' + responsiveMenuClass + ' .sub-menu')
-            .removeClass('show-nav');
-            //.attr('style', '');
+            .attr('style', '');
     }
 
     /**

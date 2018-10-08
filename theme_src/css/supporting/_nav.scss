@@ -124,29 +124,38 @@
 
 }
 
+
+.genesis-responsive-menu li,
+.genesis-responsive-menu li:hover {
+  width: 100%;
+  position: relative;
+}
+
+
+.nav-primary,  //.genesis-responsive-menu is added to menus via js
 .genesis-responsive-menu {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px; width: 1px;
-  margin: -1px; padding: 0; border: 0;
+  display:none;
 
   @include media('>mobileMenu') {
-    position: relative;
-    clip: auto;
-    height: auto; width: auto;
-    margin: initial; padding: initial; border: inherit;
+    display: block;
 
+  }
+
+  li,
+  li:hover {
+    width: 100%;
+    position: relative
+  }
+
+  .sub-menu {
+    display: none;
+    margin: 0 0 0 2rem;
+    width: calc( 100% - 2rem );
   }
 
 }
 
-.show-nav {
-  position: relative;
-  clip: auto;
-  height: auto; width: auto;
-  margin: initial; padding: initial; border: inherit;
-}
+
 .menu-toggle {
   padding:0;
   overflow: hidden;
@@ -172,10 +181,37 @@
   }
 }
 
+.sub-menu-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent;
+  padding: 0 1.25rem 0;
+  &:before {
+    color: #1a1a1a;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 250ms;
+  }
+
+  &.activated:before {
+    transform: rotate(-90deg);
+  }
+}
+
+
 .menu-toggle,
 .sub-menu-toggle {
   background: transparent;
-}
+
+  &:hover,
+  &:active,
+  &:focus {
+      box-shadow: none;
+      background: transparent;
+    }
+  }
+
 
 
 @include media('>mobileMenu') {
