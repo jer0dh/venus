@@ -3,22 +3,22 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .genesis-nav-menu {
-  clear: both;
+/*  clear: both;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
-  width: 100%;
+  width: 100%;*/
 
   .menu-item {
-    display: inline-block;
-    text-align: left;
+/*    display: inline-block;
+    text-align: left;*/
   }
 
   a {
-    color: $color-anchor-default;
+/*    color: $color-anchor-default;
     text-decoration: none;
     display: block;
-    padding: to-em(15px) to-em(10px);
+    padding: to-em(15px) to-em(10px);*/
   }
 
   a:hover,
@@ -26,41 +26,41 @@
   .current-menu-item > a,
   .sub-menu .current-menu-item > a:hover,
   .sub-menu .current-menu-item > a:focus {
-    color: lighten($color-anchor-default, 30%);
-    text-decoration: underline;
+/*    color: lighten($color-anchor-default, 30%);
+    text-decoration: underline;*/
   }
 
   .sub-menu {
 
-    position: static;
+/*    position: static;
     -webkit-transition: opacity 0.4s ease-in-out;
     -moz-transition: opacity 0.4s ease-in-out;
     -ms-transition: opacity 0.4s ease-in-out;
     -o-transition: opacity 0.4s ease-in-out;
     transition: opacity 0.4s ease-in-out;
 
-    z-index: 99;
+    z-index: 99;*/
   }
 
   .sub-menu a {
-    background-color: $background-default;
+/*    background-color: $background-default;
 
     font-size: 1rem;
     padding: to-em(20px);
     position: relative;
-    word-wrap: break-word;
+    word-wrap: break-word;*/
   }
 
   .sub-menu .sub-menu {
-    margin: to-em(-56px) 0 0 to-em(209px);
+/*    margin: to-em(-56px) 0 0 to-em(209px);*/
   }
 
   & > .first > a {
-    padding-left: 0;
+/*    padding-left: 0;*/
   }
 
   & > .last > a {
-    padding-right: 0;
+/*    padding-right: 0;*/
   }
 }
 /* ## Accessible Menu
@@ -72,23 +72,26 @@
 
 .menu .menu-item > a:focus + ul.sub-menu,
 .menu .menu-item.sfHover > ul.sub-menu {
-  left: auto;
-  opacity: 1;
+/*  left: auto;
+  opacity: 1;*/
 }
 
 /* ## Site Header Navigation
 --------------------------------------------- */
 
+/*
 .site-header .genesis-nav-menu li li {
   margin-left: 0;
 }
 
+*/
 
 @include media('>md') { //992px
 
 
 
   /* NAV */
+  /*
 
   .genesis-nav-menu .sub-menu {
     position: absolute;
@@ -116,6 +119,7 @@
     left: auto;
     opacity: 1;
   }
+  */
 
 
 }
