@@ -14,6 +14,7 @@
     color: $red;
     text-decoration: none;
     padding: 0.5em 0.2em;
+    transition: all 0.2s;
   }
 
   a:hover,
@@ -21,7 +22,8 @@
   .current-menu-item > a,
   .sub-menu .current-menu-item > a:hover,
   .sub-menu .current-menu-item > a:focus {
-    color: lighten($red, 30%);
+    color: #fff;
+    background: $red;
   }
 
   .sub-menu {
@@ -35,14 +37,14 @@
       min-width: to-em(210px, $global-font-size);
       left: -9999px;
       opacity: 0;
+      background-color: $background-default;
+      border: 1px solid #eee;
     }
 
     a {
 
       padding: 0.5em 0.4em;
       @include media('>mobileMenu') {
-        background-color: $background-default;
-        padding: 0.5em 0.2em;
         position: relative;
         word-wrap: break-word;
       }

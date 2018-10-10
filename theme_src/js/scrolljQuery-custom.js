@@ -2,6 +2,10 @@
 
     const fixedHeader = document.querySelector('.site-header');
 
+    const offsetFromFixedHeader = 20;
+
+    const menuItem = 'menu-item';
+    const currentMenuItemClass = 'current-menu-item';
     $(document).ready(function () {
 
         // Check to see if this page called externally with a hash/bookmark in the url.  If so, scroll to bottom of fixed header
@@ -9,9 +13,19 @@
         if(loadedHash) {
             let hashTop = document.querySelector(loadedHash);
             $('html, body').animate({
-                scrollTop: hashTop.offsetTop - fixedHeader.offsetHeight
+                scrollTop: hashTop.offsetTop - (fixedHeader.offsetHeight + offsetFromFixedHeader)
 
             }, 1000);
+
+            // Look to see if menu contains a link to this hash, if so add currentMenuItemClass to it
+            const newCurrentMenuItem = $('.'+menuItem+' a[href=' + loadedHash + ']');
+            if(newCurrentMenuItem.length > 0) {
+
+                $('.' + menuItem).removeClass(currentMenuItemClass);
+                newCurrentMenuItem.closest('.' + menuItem).addClass(currentMenuItemClass);
+            }
+
+
         }
 
 
@@ -35,6 +49,12 @@
                     if (target.length) {
                         // Only prevent default if animation is actually gonna happen
                         event.preventDefault();
+
+                        //Set current-menu-item
+                        const $currentMenuItem = $(this).closest('.' + menuItem);
+                        $currentMenuItem.siblings().removeClass(currentMenuItemClass);
+                        $currentMenuItem.addClass(currentMenuItemClass);
+
                         //Adding timeout to help make sure menu closing is done so fixedHeader height is correct
                         setTimeout(function() {
                             $('html, body').animate({
