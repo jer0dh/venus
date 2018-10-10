@@ -6,15 +6,15 @@ class Venus_Portfolio_Cpt {
 
 	public function __construct() {
 
-		add_action( 'after_setup_theme', [ $this, 'initialize'] );
+		add_action( 'after_setup_theme', [ $this, 'initialize' ] );
 
 	}
 
 	public function initialize() {
 
-		if( ! class_exists('acf') ) {
+		if ( ! class_exists( 'acf' ) ) {
 			// show message to dashboard that ACF plugin is required
-			add_action( 'admin_notices', [$this, 'plugin_ACF_not_loaded'] );
+			add_action( 'admin_notices', [ $this, 'plugin_ACF_not_loaded' ] );
 		} else {
 			add_action( 'after_setup_theme', [ $this, 'register_post_type' ], 20 );
 			add_action( 'after_setup_theme', [ $this, 'register_taxonomies' ], 20 );
@@ -28,16 +28,18 @@ class Venus_Portfolio_Cpt {
 	}
 
 
-public function register_post_type() {
+	public function register_post_type() {
 		register_post_type( 'venus_portfolio', [
-			'label'     => 'Portfolio',
-			'public'    => true,
-			'menu_icon' => 'dashicons-awards',
-			'supports'  => [ 'title', 'thumbnail', 'editor' ],
-			'rewrite'   => [
+			'label'        => 'Portfolio',
+			'public'       => true,
+			'menu_icon'    => 'dashicons-awards',
+			'supports'     => [ 'title', 'thumbnail', 'editor' ],
+			'rewrite'      => [
 				'slug'       => 'portfolio',
 				'with_front' => false,
 			],
+			'show_in_rest' => true,
+			'rest_base'    => 'portfolio'
 		] );
 	}
 

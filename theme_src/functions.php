@@ -164,8 +164,10 @@ genesis_set_default_layout( 'full-width-content' );
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
 add_action( 'genesis_header', 'genesis_do_nav', 11 );
 
+
 //* Add helpers
 include_once get_stylesheet_directory() . '/libs/multipage.php';
+
 
 //* Add Portfolio CPT
 include_once get_stylesheet_directory() . '/libs/venus_portfolio_cpt.php';
@@ -173,4 +175,8 @@ include_once get_stylesheet_directory() . '/libs/venus_portfolio_cpt.php';
 
 //* Add Helper Functions
 include_once get_stylesheet_directory() . '/libs/helpers.php';
+
+
+//* Add Image helper Functions
+include_once get_stylesheet_directory() . '/libs/image_functions.php';
 

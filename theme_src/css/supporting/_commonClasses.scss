@@ -2,6 +2,17 @@
 /* # Common Classes
 ---------------------------------------------------------------------------------------------------- */
 
+/* # Images, Lazy, loading
+---------------------------------------------------------------------------------------------------- */
+.not-loaded {
+  opacity: 0;
+}
+/* classes that not-loaded could be applied too.  Gives a nice fade in when .not-loaded is removed
+---------------------- */
+.banner {
+  transition: opacity 0.4s;
+}
+
 /* ## Avatar
 --------------------------------------------- */
 
@@ -67,33 +78,6 @@
   width: 1px;
 }
 
-/* ## Titles
---------------------------------------------- */
-
-.author-box-title,
-.archive-title {
-  font-size: 20px;
-  font-size: to-em(20px);
-}
-
-.entry-title {
-  font-size: 36px;
-  font-size: to-em(36px);
-}
-
-.entry-title a,
-.sidebar .widget-title a {
-  color: #333;
-}
-
-.entry-title a:hover,
-.entry-title a:focus {
-  color: #c3251d;
-}
-
-.widget-title {
-  margin-bottom: to-em(20px);
-}
 
 /* ## WordPress
 --------------------------------------------- */
