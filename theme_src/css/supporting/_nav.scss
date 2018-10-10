@@ -82,7 +82,7 @@
 
     @include media('>mobileMenu') {
       flex-flow: row wrap;
-      justify-content: space-evenly;
+      justify-content: space-around;
     }
 
     & > li { //1st-level
@@ -96,8 +96,15 @@
 
 
 }
+//IE11, Edge may not support space-evenly so leave as space-around unless it supports space-evenly
 
-
+@supports  (justify-content: space-evenly) {
+  @include media('>mobileMenu') {
+   .nav-primary .menu {
+      justify-content: space-evenly;
+    }
+  }
+}
 
 
 /* Responsive Menu

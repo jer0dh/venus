@@ -1,11 +1,10 @@
 (function ($) {
 
     const fixedHeader = document.querySelector('.site-header');
-
     const offsetFromFixedHeader = 20;
-
     const menuItem = 'menu-item';
     const currentMenuItemClass = 'current-menu-item';
+
     $(document).ready(function () {
 
         // Check to see if this page called externally with a hash/bookmark in the url.  If so, scroll to bottom of fixed header
@@ -25,9 +24,7 @@
                 newCurrentMenuItem.closest('.' + menuItem).addClass(currentMenuItemClass);
             }
 
-
         }
-
 
 
         // Select all links with hashes

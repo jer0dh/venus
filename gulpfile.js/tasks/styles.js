@@ -15,11 +15,16 @@ const deployRemote = require('../lib/deployRemote');
 /**
  * Sass Minify - copies minified css version of /css/sass/*.scss
  */
+
+const autoprefixerOptions = {
+    browsers: ['last 4 versions'],
+    grid: true
+}
 gulp.task('styles-sass-min', function () {
     return gulp.src( config.srcFolder + '/css/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed', sourceMap: true}).on('error', sass.logError))
-        .pipe(autoprefixer({}))  // browsers: ['last 4 versions']
+        .pipe(autoprefixer(autoprefixerOptions))  // browsers: ['last 4 versions']
         .pipe(rename(function(path){
             path.extname = '.min.css'
         }))
@@ -34,7 +39,7 @@ gulp.task('styles-sass-min', function () {
 gulp.task('styles-sass-max', function () {
     return gulp.src( config.srcFolder + '/css/*.scss')
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(autoprefixer()) //flexbox: "no-2009",browsers: ['last 4 versions']
+        .pipe(autoprefixer(autoprefixerOptions)) //flexbox: "no-2009",browsers: ['last 4 versions']
         .pipe(gulp.dest( config.destination + '/css'));
 });
 
