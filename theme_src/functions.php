@@ -129,7 +129,7 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'header',
 	'menu-primary',
 	'menu-secondary',
-	'site-inner',
+	//'site-inner',
 	'footer-widgets',
 	'footer',
 ) );
@@ -169,3 +169,8 @@ include_once get_stylesheet_directory() . '/libs/multipage.php';
 
 //* Add Portfolio CPT
 include_once get_stylesheet_directory() . '/libs/venus_portfolio_cpt.php';
+
+
+//* Add Helper Functions
+include_once get_stylesheet_directory() . '/libs/helpers.php';
+
