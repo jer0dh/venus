@@ -135,6 +135,6 @@ gulp.task('js-deploy', function() {
 
 gulp.task('js-all-deploy', function() {
 
-    return deployRemote( config.destination + '/**/*', '/js' );
+    return deployRemote( config.destination + '/**/*', '/' );
 
 });

@@ -42,6 +42,9 @@ gulp.task('build', function(cb) {
         // JS in sections like in template-parts
         'js-in-sections',
 
+        // handlebar files like in template-parts
+        'mustache',
+
         // Copy all other files to destination
         'files-template-copy',
 

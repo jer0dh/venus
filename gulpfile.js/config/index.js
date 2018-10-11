@@ -57,6 +57,7 @@ config.doNotCopyList = [
     '!' + config.srcFolder + '/**/*.scss',
     '!' + config.srcFolder + '/**/*.php',
     '!' + config.srcFolder + '/svg*/**/*.*',
+    '!' + config.srcFolder + '/**/*.mustache',
     '!' + config.srcFolder + '/**/*.js'      // for javascript in template-parts
 ];
 

@@ -1,6 +1,6 @@
 {
   "name": "theme-from-venus",
-  "version": "1.0.3-597",
+  "version": "1.0.3-600",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
@@ -38,7 +38,9 @@
     "gulp-template": "^4.0.0",
     "gulp-uglify": "^3.0.1",
     "gulp-zip": "^4.2.0",
+    "handlebars": "^4.0.12",
     "include-media": "^1.4.9",
+    "mustache": "^3.0.0",
     "phplint": "^2.0.1",
     "require-dir": "^1.1.0",
     "rimraf": "^2.6.2",
@@ -63,7 +65,8 @@
   "jsConcatenatedVendorScripts": [
     "theme_src/js/vendor/debounce.js",
     "node_modules/smooth-scroll/dist/smooth-scroll.polyfills.js",
-    "node_modules/imagesloaded/imagesloaded.pkgd.js"
+    "node_modules/imagesloaded/imagesloaded.pkgd.js",
+    "node_modules/mustache/mustache.js"
   ],
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [

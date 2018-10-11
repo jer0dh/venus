@@ -21,6 +21,10 @@ gulp.task('watch-javascript-in-sections-tasks', function(cb) {
    return gulpSequence('bump-and-push', 'js-in-sections', 'js-all-deploy', cb);
 });
 
+gulp.task('watch-mustache-tasks', function(cb) {
+   return gulpSequence('bump-and-push', 'mustache', 'mustache-deploy', cb);
+});
+
 gulp.task('watch-php-tasks', function(cb) {
    return gulpSequence('bump-and-push','php-template-copy', 'php-deploy', cb);
 });
@@ -39,6 +43,8 @@ gulp.task('watch', function() {
     gulp.watch([config.srcFolder + '/**/*.js','!' + config.srcFolder + '/js/**/*', '!' + config.jsAppPath +'/**/*'], ['watch-javascript-in-sections-tasks']);
 
     gulp.watch([config.jsAppPath + '/**/*'], ['watch-javascript-app-tasks']);
+
+    gulp.watch([config.srcFolder + '/**/*.mustache'], ['watch-mustache-tasks']);
 
     gulp.watch([config.srcFolder + '/**/*.php'], ['watch-php-tasks']);
 
