@@ -1,6 +1,6 @@
 {
   "name": "theme-from-venus",
-  "version": "1.0.3-575",
+  "version": "1.0.3-588",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {

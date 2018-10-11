@@ -30,7 +30,7 @@ config.destination = config.destFolder + '/' + config.themeName;
 
 /* allow specific instances when gulp-remove-code should remove...but ALWAYS remove if production is true */
 
-config.production = false;
+config.production = true;
 config.removeCodeOptions = {
     production : config.production,
     notTesting : config.production || false,
@@ -56,7 +56,8 @@ config.doNotCopyList = [
     '!' + config.srcFolder + '/js/**/*.*',
     '!' + config.srcFolder + '/**/*.scss',
     '!' + config.srcFolder + '/**/*.php',
-    '!' + config.srcFolder + '/svg*/**/*.*'
+    '!' + config.srcFolder + '/svg*/**/*.*',
+    '!' + config.srcFolder + '/**/*.js'      // for javascript in template-parts
 ];
 
 config.jsConcatenatedScriptsName = pkg.jsConcatenatedScriptsName;

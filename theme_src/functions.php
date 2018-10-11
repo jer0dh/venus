@@ -23,6 +23,8 @@ add_action( 'wp_enqueue_scripts', 'gtl_enqueue_scripts_styles' );
 
 define( 'GS_MAIN_SCRIPT', 'gs_scripts' );
 
+define( 'VENUS_JS_SUFFIX', ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '<% if(production){%>.min<% } %>');
+
 function gtl_enqueue_scripts_styles() {
 
 	$version = wp_get_theme()->Version;
@@ -34,8 +36,8 @@ function gtl_enqueue_scripts_styles() {
 
 	wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Muli:400,600,700,800', array() );
 
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '<% if(production){%>.min<% } %>';  //Gulptask in dev environment will put in '.min' if dev is set for production
-
+	//$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '<% if(production){%>.min<% } %>';  //Gulptask in dev environment will put in '.min' if dev is set for production
+	$suffix = VENUS_JS_SUFFIX;
 	wp_enqueue_script( GS_MAIN_SCRIPT, get_stylesheet_directory_uri() . "/js/scripts{$suffix}.js", array( 'jquery' ), $version, true );
 
 

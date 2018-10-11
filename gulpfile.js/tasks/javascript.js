@@ -77,6 +77,23 @@ gulp.task('js-concat-scripts', function(cb) {
 
 
 /**
+ * Task to transcript and minify js in the template-parts or other locations in the theme_src
+ */
+
+gulp.task('js-in-sections-minify', function() {
+    return gulp.src([ config.srcFolder + '/**/*.js', '!' + config.srcFolder + '/js/**/*.js'])
+        .pipe(sourcemaps.init())
+        .pipe(removeCode(config.removeCodeOptions))
+        .pipe(babel({ presets: ['env']}))
+        .pipe(gulp.dest( config.destination + '/'))
+        .pipe(rename({extname: '.min.js'}))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest( config.destination + '/'));
+});
+
+
+/**
  *  JS app.  Using webpack to package the modules.
 
  */

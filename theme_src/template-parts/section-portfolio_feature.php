@@ -1,5 +1,7 @@
 <?php
 
+static $portfolio_feature_instance = 1;
+
 $id = get_sub_field( 'id' );
 
 $classes = get_sub_field( 'additional_classes' );
@@ -19,6 +21,19 @@ $portfolios = get_sub_field( 'portfolios' );
 
 add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10, 2 );
 
+if ( ! function_exists( 'venus_get_categories' ) ) {
+	function venus_get_categories( $categories = false, $sep = ', ' ) {
+		$return = '';
+		if ( false !== $categories && is_array( $categories ) ) {
+			foreach ( $categories as $category ) {
+
+				$return .= $category->name . $sep;
+			}
+		}
+
+		return rtrim( $return, $sep );
+	}
+}
 ?>
 
     <section <?php echo $attributes; ?>>
@@ -84,17 +99,15 @@ add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10,
 <?php
 remove_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10, 2 );
 
+// We only want the script to appear once on the page
 
-function venus_get_categories( $categories = false, $sep = ', ' ) {
-	$return = '';
-	if ( false !== $categories && is_array( $categories ) ) {
-		foreach ( $categories as $category ) {
+echo '<script type="application/javascript">';
+include_once( get_stylesheet_directory() . '/template-parts/section-portfolio_feature' . VENUS_JS_SUFFIX . '.js' );
+echo '</script>';
 
-			$return .= $category->name . $sep;
-		}
-	}
-	return rtrim( $return, $sep );
-}
+$portfolio_feature_instance += 1;
+
+
 /*
 
 get_sub_field will run wpautop on the wysiwyg field.  Using custom function this
