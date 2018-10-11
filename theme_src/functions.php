@@ -54,7 +54,7 @@ function gtl_admin_style() {
 	wp_enqueue_style( 'admin-styles', get_stylesheet_directory_uri() . '/css/admin-style.min.css', array(), $version );
 }
 
-add_action( 'admin_enqueue_scripts', 'gtl_admin_style' );
+//add_action( 'admin_enqueue_scripts', 'gtl_admin_style' );
 
 // Define our responsive menu settings.
 function genesis_sample_responsive_menu_settings() {
@@ -73,6 +73,29 @@ function genesis_sample_responsive_menu_settings() {
 	);
 
 	return $settings;
+}
+
+// Define a wp_local javascript variable.  Add right before the wp_print_footer_scripts is run
+
+add_action( 'wp_footer', 'venus_add_localized_js_data', 19);
+/**
+ * Creates a local variable to contain data for javascripts
+ *
+ * Contains Filter 'venus_localized_js_data' that can be accessed elsewhere to add data to this array
+ *
+ */
+function venus_add_localized_js_data() {
+	$wp_local = [
+		'restApi'  => esc_url(get_rest_url(null, '/wp/v2/'))
+		];
+
+	$wp_local = apply_filters( 'venus_localized_js_data', $wp_local );
+
+	wp_localize_script(
+		GS_MAIN_SCRIPT,
+		'wpLocal',
+		$wp_local
+	);
 
 }
 
