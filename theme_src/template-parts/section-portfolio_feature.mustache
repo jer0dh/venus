@@ -1,1 +1,17 @@
-<h2>Does this work 2 {test}</h2>
+<div class="row portfolio-feature-screenshots-container not-loaded">
+    {{#acf}}
+        {{# screenshots }}
+            <div class="col-md-3 screenshot">
+                <noscript>
+                    <img src="{{& sizes.medium }}" alt="{{ alt }}"/>
+                </noscript>
+                <img src="{{& sizes.medium }}"
+                     srcset="{{& sizes.medium }} 300w,
+                            {{& sizes.large }} 768w,
+                            {{& url }} {{ width }}w"
+                     sizes="(min-width: 768px) 33vw, 100vw"
+                     alt="{{ alt }}" />
+            </div>
+        {{/screenshots}}
+    {{/acf}}
+</div>

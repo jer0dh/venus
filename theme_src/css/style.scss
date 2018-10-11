@@ -165,6 +165,9 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 --------------------------------------------------------------- */
 @import "supporting/goToTop";
 
+/* Section CSS
+--------------------------------------------------------------- */
+@import "supporting/sections/sections";
 
 /* Bootstrap css
 NOTE: if you changed anything that is used in other variables (like grid), you will want to load the bootstrap/variables.scss file

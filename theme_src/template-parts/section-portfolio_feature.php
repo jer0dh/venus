@@ -60,48 +60,50 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
 				$content = apply_filters( 'the_content', $content );
 				$content = str_replace( ']]>', ']]&gt;', $content );
 				?>
-                <div class="row">
-                    <div class="portfolio-feature-feature col-md-4 order-0">
-                        <noscript>
-                            <img src="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id( $id ), 'medium' ); ?>"
-                                 alt/>
-                        </noscript>
-						<?php echo wp_get_attachment_image( get_post_thumbnail_id( $id ), 'full' ); ?>
+                <div class="portfolio-feature" data-id="<?php echo intval( $id ); ?>">
+                    <div class="row">
+                        <div class="portfolio-feature-feature col-md-4 order-0">
+                            <noscript>
+                                <img src="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id( $id ), 'medium' ); ?>"
+                                     alt/>
+                            </noscript>
+							<?php echo wp_get_attachment_image( get_post_thumbnail_id( $id ), 'full' ); ?>
 
-                    </div>
-                    <div class="portfolio-feature-desc col-md-4 order-3 order-md-1">
-                        <h3><?php echo get_the_title( $id ); ?></h3>
-                        <div>
-							<?php echo $content; ?>
+                        </div>
+                        <div class="portfolio-feature-desc col-md-4 order-3 order-md-1">
+                            <h3><?php echo get_the_title( $id ); ?></h3>
+                            <div>
+								<?php echo $content; ?>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <div class="portfolio-feature-meta col-md-4 order-1 order-md-2">
+							<?php if ( $category ): ?>
+                                <div>
+                                    Type: <?php echo wp_kses_post( venus_get_categories( $category ) ); ?>
+                                </div>
+							<?php endif; ?>
+							<?php if ( $external_url ): ?>
+                                <div>
+                                    URL:
+                                    <a href="<?php echo esc_url( $external_url ); ?>"><?php echo esc_url( $external_url ); ?></a>
+                                </div>
+							<?php endif; ?>
+							<?php if ( $company ): ?>
+                                <div>
+                                    Company: <?php echo wp_kses_post( $company ); ?>
+                                </div>
+							<? endif; ?>
 
-                    <div class="portfolio-feature-meta col-md-4 order-1 order-md-2">
-						<?php if ( $category ): ?>
-                            <div>
-                                Type: <?php echo wp_kses_post( venus_get_categories( $category ) ); ?>
-                            </div>
+                        </div>
+
+                    </div><!-- row -->
+                    <div class="row portfolio-feature-screenshots closed-slides">
+						<?php if ( $screenshots ): ?>
+                            <button class="btn btn-primary">More Screenshots</button>
 						<?php endif; ?>
-						<?php if ( $external_url ): ?>
-                            <div>
-                                URL:
-                                <a href="<?php echo esc_url( $external_url ); ?>"><?php echo esc_url( $external_url ); ?></a>
-                            </div>
-						<?php endif; ?>
-						<?php if ( $company ): ?>
-                            <div>
-                                Company: <?php echo wp_kses_post( $company ); ?>
-                            </div>
-						<? endif; ?>
-
                     </div>
-
-                </div><!-- row -->
-                <div class="row portfolio-feature-screenshots">
-					<?php if ( $screenshots ): ?>
-                        <button class="btn btn-primary">More Screenshots</button>
-					<?php endif; ?>
                 </div>
 			<?php endforeach; ?>
 

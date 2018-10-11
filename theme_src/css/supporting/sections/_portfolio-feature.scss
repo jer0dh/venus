@@ -1,0 +1,23 @@
+.section-portfolio-feature {
+
+  .portfolio-feature-screenshots {
+    display: flex;
+    flex-flow: column nowrap;
+
+    & > * {
+      flex: 1;
+    }
+  }
+
+  .portfolio-feature-screenshots-container {
+    transition: all 0.2s;
+    overflow: hidden;
+    height: auto;
+  }
+  .closed-slides .portfolio-feature-screenshots-container {
+    flex: 0;
+
+  }
+
+
+}
