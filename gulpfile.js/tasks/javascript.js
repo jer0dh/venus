@@ -80,7 +80,7 @@ gulp.task('js-concat-scripts', function(cb) {
  * Task to transcript and minify js in the template-parts or other locations in the theme_src
  */
 
-gulp.task('js-in-sections-minify', function() {
+gulp.task('js-in-sections', function() {
     return gulp.src([ config.srcFolder + '/**/*.js', '!' + config.srcFolder + '/js/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(removeCode(config.removeCodeOptions))
@@ -130,5 +130,11 @@ gulp.task('js-prettier', function(){
 gulp.task('js-deploy', function() {
 
     return deployRemote( config.destination + '/js/**/*', '/js' );
+
+});
+
+gulp.task('js-all-deploy', function() {
+
+    return deployRemote( config.destination + '/**/*', '/js' );
 
 });

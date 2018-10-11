@@ -17,6 +17,10 @@ gulp.task('watch-javascript-app-tasks', function(cb) {
    return gulpSequence('bump-and-push', 'js-app', 'js-deploy', cb);
 });
 
+gulp.task('watch-javascript-in-sections-tasks', function(cb) {
+   return gulpSequence('bump-and-push', 'js-in-sections', 'js-all-deploy', cb);
+});
+
 gulp.task('watch-php-tasks', function(cb) {
    return gulpSequence('bump-and-push','php-template-copy', 'php-deploy', cb);
 });
@@ -31,6 +35,8 @@ gulp.task('watch', function() {
     gulp.watch([config.srcFolder + '/css/**/*.scss'], ['watch-styles-tasks']);
 
     gulp.watch([config.srcFolder + '/js/**/*', '!' + config.jsAppPath +'/**/*'], ['watch-javascript-tasks']);
+
+    gulp.watch([config.srcFolder + '/**/*.js','!' + config.srcFolder + '/js/**/*', '!' + config.jsAppPath +'/**/*'], ['watch-javascript-in-sections-tasks']);
 
     gulp.watch([config.jsAppPath + '/**/*'], ['watch-javascript-app-tasks']);
 

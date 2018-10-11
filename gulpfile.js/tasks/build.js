@@ -40,7 +40,7 @@ gulp.task('build', function(cb) {
         //'js-app',
 
         // JS in sections like in template-parts
-        'js-in-sections-minify',
+        'js-in-sections',
 
         // Copy all other files to destination
         'files-template-copy',

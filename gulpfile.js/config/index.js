@@ -30,7 +30,7 @@ config.destination = config.destFolder + '/' + config.themeName;
 
 /* allow specific instances when gulp-remove-code should remove...but ALWAYS remove if production is true */
 
-config.production = true;
+config.production = false;
 config.removeCodeOptions = {
     production : config.production,
     notTesting : config.production || false,

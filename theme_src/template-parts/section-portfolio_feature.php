@@ -1,6 +1,13 @@
 <?php
 
-static $portfolio_feature_instance = 1;
+// Gotta keep track how many times this appears on a single page.
+// Don't add scripts and js templates if more than once
+
+global $venus_portfolio_feature_instance;
+
+if(! isset($venus_portfolio_feature_instance)) {
+    $venus_portfolio_feature_instance = 1;
+}
 
 $id = get_sub_field( 'id' );
 
@@ -91,6 +98,11 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
                     </div>
 
                 </div><!-- row -->
+                <div class="row portfolio-feature-screenshots">
+                    <?php if($screenshots):?>
+                        <button class="btn btn-primary">More Screenshots</button>
+                    <?php endif; ?>
+                </div>
 			<?php endforeach; ?>
 
         </div>
@@ -100,13 +112,14 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
 remove_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10, 2 );
 
 // We only want the script to appear once on the page
+if( $venus_portfolio_feature_instance === 1 ) {
+	echo '<script type="application/javascript">';
+	include_once( get_stylesheet_directory() . '/template-parts/section-portfolio_feature' . VENUS_JS_SUFFIX . '.js' );
+	echo '</script>';
 
-echo '<script type="application/javascript">';
-include_once( get_stylesheet_directory() . '/template-parts/section-portfolio_feature' . VENUS_JS_SUFFIX . '.js' );
-echo '</script>';
 
-$portfolio_feature_instance += 1;
-
+}
+$venus_portfolio_feature_instance += 1;
 
 /*
 
