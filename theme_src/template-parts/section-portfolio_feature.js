@@ -17,23 +17,22 @@
 
             // if the triggerClass isn't there, then the slides are already there and open
             // so add triggerClass to hide existing slides
+/*
             if (!$container.hasClass(triggerClass)) {
                 $container.addClass(triggerClass);
                 $container.find('button').text(buttonOpenMessage);
                 return;
             }
-
+*/
             let $slides = $(slides);
-            if ($slides.length !== 0) {  //slides are loaded so just need to show them
-                $container.removeClass(triggerClass)
-                    .find('button').text(buttonCloseMessage);
+            if ($slides.length > 0) {
+                $this.trigger('toggleCollapse');
                 return;
             }
 
             // Get id of portfolio
             let $parent = $this.closest(parent);
             let id = $parent.data('id');
-            console.log(id);
 
             // Get screenshots using REST
 
@@ -46,11 +45,8 @@
 
                     // add the rendered output and when images are finished loading
                     // remove button and remove .not-loaded
-                    $container.append(output).imagesLoaded(function () {
-                        $container.removeClass(triggerClass)
-                            .find('button').text(buttonCloseMessage);
-
-                        $(slides).removeClass('not-loaded');
+                    $container.append(output).imagesLoaded().done(function () {
+                        $this.trigger('toggleCollapse');
                     });
                 }
             })

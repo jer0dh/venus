@@ -99,9 +99,9 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
                         </div>
 
                     </div><!-- row -->
-                    <div class="row portfolio-feature-screenshots closed-slides">
-						<?php if ( $screenshots ): ?>
-                            <button class="btn btn-primary">More Screenshots</button>
+                    <div class="row portfolio-feature-screenshots">
+						<?php if ( $screenshots ):  // Using animateHeight.js to collapse screenshot container?>
+                            <button class="btn btn-primary" data-collapse="#portfolio_feature_<?php echo intval($id); ?>">More Screenshots</button>
 						<?php endif; ?>
                     </div>
                 </div>
