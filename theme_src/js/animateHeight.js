@@ -57,6 +57,21 @@
             element.setAttribute('data-collapsed', 'false');
         }
 
+        function setToggleText(t, isCollapsed){
+            const openText = t.getAttribute('data-open-text');
+
+            if(isCollapsed) {
+                const closedText = t.getAttribute('data-closed-text');
+                if( closedText && closedText !== '' ) {
+                    t.innerHTML = closedText;
+                }
+            } else {
+                if( openText && openText !== '' ) {
+                    t.innerHTML = openText;
+                }
+
+            }
+        }
         //document.querySelector('[data-collapse]').addEventListener('collapse', function (e) {
         $('[data-collapse]').on( 'toggleCollapse', function() {
             let sectionToCollapse = this.getAttribute('data-collapse');
@@ -67,8 +82,10 @@
                 if (isCollapsed) {
                     expandSection(section);
                     section.setAttribute('data-collapsed', 'false')
+                    setToggleText(this, false);
                 } else {
                     collapseSection(section)
+                    setToggleText(this, true);
                 }
             }
         });
