@@ -84,7 +84,6 @@
         console.log('section-portfolio-grid script');
 
         $(parent).on('click', gridThumbnail, function (e) {
-            console.log('click');
             e.preventDefault();
             let $this = $(this);
             let $gridItem = $this.closest(gridItem);
@@ -94,19 +93,52 @@
             let id = $gridItem.attr('data-id');
             let $expandedSection = $gridItem.siblings('[data-id=' + id + ']');
             if ($expandedSection.length > 0) {
-                console.log('same gridItem');
                 themeJs.collapseSection($expandedSection[0], function() {
-                    $expandedSection.appendTo($gridItem)
+                    $expandedSection.appendTo($gridItem);
+                    $gridItem.removeClass(gridItemOpenClass);
                 });
 
                 return;
             }
-            // If not, close existing expanded grid-item, then expand this one.
+            // If not, close any existing expanded grid-items, then expand the one clicked.
 
-            //Expand this grid item
+            //Close existing grid-items more info expanded section, then open new
+            $expandedSection = $gridItem.siblings(gridMoreInfo);
+            if( $expandedSection.length > 0) {
+/*
+              This 'worked' but because the openGridItem is called asynchronously the scroll to
+              would scroll too far as the previous expanded section collapsed.  So will assume only
+              one expandedSection
 
+                $expandedSection.each(function() {
+                   const $this = $(this);
+                   const id = $this.attr('data-id');
+                    const $parent = $this.siblings('[data-id=' + id + ']');
+                    themeJs.collapseSection(this, function() {
+                        $this.appendTo($parent);
+                    })
+                });*/
+                const id = $expandedSection.attr('data-id');
 
-            openGridItem($gridItem);
+                // get gridItem where expanded section will be put back
+                const $parent = $expandedSection.siblings('[data-id=' + id + ']');
+
+                themeJs.collapseSection($expandedSection[0], function() {
+                    $expandedSection.appendTo($parent);
+                    $parent.removeClass(gridItemOpenClass);
+
+                    // now open new when collapse has finished
+                    openGridItem($gridItem);
+                })
+
+            } else {  // no expanded sections
+
+                //Expand this grid item
+
+                openGridItem($gridItem);
+
+            }
+
 
 
 
