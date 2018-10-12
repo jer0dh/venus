@@ -29,10 +29,9 @@
         //get the hidden div containing the markup for the expanded section and clone it
         //add a data attribute pointing to the original article
         const $clonedMoreInfoSection = $gridItem.find(gridMoreInfo)
-            .clone()
             .addClass('not-loaded')
             .css('height', '0')
-            .data('id', id);
+            .attr('data-id', id);
         //select all article after this article
         const $nextGridItems = $gridItem.nextAll(gridItem);
         let found = false;
@@ -88,12 +87,23 @@
             console.log('click');
             e.preventDefault();
             let $this = $(this);
+            let $gridItem = $this.closest(gridItem);
+
 
             // if expanded-grid-item id matches this id, close this gridItem, then done
+            let id = $gridItem.attr('data-id');
+            let $expandedSection = $gridItem.siblings('[data-id=' + id + ']');
+            if ($expandedSection.length > 0) {
+                console.log('same gridItem');
+                themeJs.collapseSection($expandedSection[0], function() {
+                    $expandedSection.appendTo($gridItem)
+                });
+
+                return;
+            }
             // If not, close existing expanded grid-item, then expand this one.
 
             //Expand this grid item
-            let $gridItem = $this.closest(gridItem);
 
 
             openGridItem($gridItem);

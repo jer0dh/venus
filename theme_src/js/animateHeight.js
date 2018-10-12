@@ -11,7 +11,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
-        function collapseSection(element) {
+        function collapseSection(element, callback = false) {
             // get the height of the element's inner content, regardless of its actual size
             let sectionHeight = element.scrollHeight;
 
@@ -30,14 +30,24 @@
                 // have the element transition to height: 0
                 requestAnimationFrame(function () {
                     element.style.height = 0 + 'px';
+                    // when the next css transition finishes (which should be the one we just triggered)
+                    element.addEventListener('transitionend', function (e) {
+                        // remove this event listener so it only gets triggered once
+                        element.removeEventListener('transitionend', arguments.callee);
+                        // mark the section as "currently collapsed"
+                        element.setAttribute('data-collapsed', 'true');
+                        if(callback) {
+                            callback();
+                        }
+                    });
+
                 });
             });
 
-            // mark the section as "currently collapsed"
-            element.setAttribute('data-collapsed', 'true');
+
         }
 
-        function expandSection(element) {
+        function expandSection(element, callback = false) {
             // get the height of the element's inner content, regardless of its actual size
             let sectionHeight = element.scrollHeight;
 
@@ -51,6 +61,9 @@
 
                 // remove "height" from the element's inline styles, so it can return to its initial value
                 element.style.height = null;
+                if(callback) {
+                    callback();
+                }
             });
 
             // mark the section as "currently not collapsed"
