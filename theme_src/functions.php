@@ -189,6 +189,8 @@ genesis_set_default_layout( 'full-width-content' );
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
 add_action( 'genesis_header', 'genesis_do_nav', 11 );
 
+//Images
+add_image_size('portfolio_grid', 450, 350, ['top', 'center']);
 
 //* Add helpers
 include_once get_stylesheet_directory() . '/libs/multipage.php';

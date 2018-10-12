@@ -90,6 +90,9 @@
             }
         });
 
+        window.themeJs = themeJs || {};
+        themeJs.collapseSection = collapseSection;
+        themeJs.expandSection = expandSection;
     });
 
 })(jQuery);

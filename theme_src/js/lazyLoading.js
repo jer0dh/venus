@@ -1,5 +1,6 @@
 (function ($) {
 
+    window.themeJs = window.themeJs || {};
 
     /**
      * https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
@@ -41,18 +42,37 @@
             //Read in the data-srcset attributes of this img tag
 
             let dataSrcSet = $this.data('srcset');
+            let dataSrc = $this.data('src');
 
-            if (dataSrcSet) {
-                $this.attr('srcset', dataSrcSet);
-
+            if (dataSrcSet || dataSrc) {
+                if(dataSrcSet) {
+                    $this.attr('srcset', dataSrcSet);
+                } else {
+                    $this.attr('src', dataSrc)
+                }
                 // imagesLoaded will run the function once the image is fully loaded to the browser
                 $this.imagesLoaded(function () {
                     $this.addClass('lazy-image-loaded');
+                    $this.removeClass('lazy-image');
                 });
 
             }
         };
 
+        const loadSection = function (el, callback = false) {
+            const $section = $(el);
+            let $imgs = $section.find('.lazy-image');
+            if ($imgs.length > 0) {
+                $imgs.each(function () {
+                    loadImg(this);
+                })
+            }
+            $section.imagesLoaded({background: true})  //once image is loaded into DOM, remove class .not-loaded.  Even if error.
+                .always(function () {
+                    $section.removeClass('not-loaded');
+                    if(callback) { callback(); }
+                });
+        }
 
         let $sectionsToLoad = $('.not-loaded');
 
@@ -64,17 +84,7 @@
             $sectionsToLoad.filter('.not-loaded').each(function (i, section) {
                 let $section = $(section);
                 if (Utils.isElementInView(section)) {
-                    let $imgs = $section.find('.lazy-image');
-                    if ($imgs.length > 0) {
-                        $imgs.each(function () {
-                            loadImg(this);
-                        })
-                    }
-                    $section.imagesLoaded({background: true})  //once image is loaded into DOM, remove class .not-loaded.  Even if error.
-                        .always(function () {
-                            $section.removeClass('not-loaded');
-                        });
-
+                    loadSection(section);
                 }
             });
 
@@ -88,6 +98,9 @@
         });
         $(window).on('scroll', onScrollLoadInView.handleEvent.bind(onScrollLoadInView));  //check if new .not-loaded has come into view on scroll event.
 
+        // pass this function to other theme scripts
+        themeJs.loadImg = loadImg;
+        themeJs.loadSection = loadSection;
     });
 
 })(jQuery);
