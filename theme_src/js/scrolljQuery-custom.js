@@ -52,10 +52,12 @@
                         $currentMenuItem.siblings().removeClass(currentMenuItemClass);
                         $currentMenuItem.addClass(currentMenuItemClass);
 
+                        let targetTop = target.offset().top;
+
                         //Adding timeout to help make sure menu closing is done so fixedHeader height is correct
                         setTimeout(function() {
                             $('html, body').animate({
-                                scrollTop: target.offset().top - fixedHeader.offsetHeight
+                                scrollTop: targetTop - fixedHeader.offsetHeight
 
                             }, 1000, function () {
                                 //  history.replaceState({}, "", target.selector);
@@ -66,6 +68,14 @@
                                 if ($target.is(":focus")) { // Checking if the target was focused
                                     return false;
                                 }
+                                let newTargetTop = target.offset().top;
+                                if(newTargetTop !== targetTop) {  //some elements may have expanded page while scrolling
+                                    $('html, body').animate({
+                                        scrollTop: newTargetTop - fixedHeader.offsetHeight
+
+                                    }, 1000)
+                                }
+
                         })}, 200);
 
                     }

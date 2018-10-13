@@ -26,7 +26,7 @@ function venus_image_markup_lazy( $attributes, $image = null ) {
 
 	if ( isset( $attributes['src'] ) ) {
 		$attributes['data-src'] = $attributes['src'];
-		$attributes['src']      = ''; //could add default small image or a base64 encoded small image here
+		$attributes['src']      = 'data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E'; //could add default small image or a base64 encoded small image here
 	}
 	if ( isset( $attributes['srcset'] ) ) {
 		$attributes['data-srcset'] = $attributes['srcset'];
