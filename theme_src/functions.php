@@ -192,6 +192,9 @@ add_action( 'genesis_header', 'genesis_do_nav', 11 );
 //Images
 add_image_size('portfolio_grid', 450, 350, ['top', 'center']);
 
+//* Add acf
+include_once get_stylesheet_directory() . '/libs/acf.php';
+
 //* Add helpers
 include_once get_stylesheet_directory() . '/libs/multipage.php';
 

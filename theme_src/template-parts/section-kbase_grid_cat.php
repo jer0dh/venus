@@ -8,7 +8,7 @@ $classes = get_sub_field( 'additional_classes' );
 
 $classes = ( $classes ) ? $classes : '';
 
-$classes .= ' banner not-loaded section-kbase-excerpts-cat';
+$classes .= ' banner not-loaded section-kbase-grid-cat';
 
 $attributes = '';
 if ( $id ) {
@@ -17,10 +17,10 @@ if ( $id ) {
 
 $attributes .= ' class="' . esc_attr( $classes ) . '"';
 
-$title    = get_sub_field( 'title' );
-$category = get_sub_field( 'category' );
-$page = 1;
-$maximum_posts = get_sub_field('maximum_posts') ? get_sub_field('maximum_posts') : 5;
+$title         = get_sub_field( 'title' );
+$category      = get_sub_field( 'category' );
+$page          = 1;
+$maximum_posts = get_sub_field( 'maximum_posts' ) ? get_sub_field( 'maximum_posts' ) : 5;
 
 add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10, 2 );
 
@@ -46,24 +46,23 @@ add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10,
 
 			$cquery = new WP_Query( $args );
 
-			if ( $cquery->have_posts() ) :
+			if ( $cquery->have_posts() ) : ?>
+                <div class="row ">
+					<?php while ( $cquery->have_posts() ) :
+						$cquery->the_post();
+						?>
 
-				while ( $cquery->have_posts() ) :
-					$cquery->the_post();
-					?>
+                        <div class="col-md-3">
+                            <a href="<?php the_permalink(); ?>">
+								<?php echo wp_get_attachment_image( venus_get_image_id( get_the_ID() ), 'full' ) ?>
+                            </a>
+                            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
-            <div class="row ">
-                <div class="col-md-3">
-                    <a href="<?php the_permalink(); ?>">
-                    <?php echo wp_get_attachment_image( venus_get_image_id(get_the_ID()), 'full')?>
-                    </a>
+                        </div>
+
+
+					<?php endwhile; ?>
                 </div>
-                <div class="col-md-9">
-                    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                    <div><?php the_excerpt(); ?></div>
-                </div>
-            </div>
-				<?php endwhile; ?>
 			<?php endif;
 
 			wp_reset_postdata(); ?>
