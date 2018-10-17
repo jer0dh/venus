@@ -210,3 +210,14 @@ include_once get_stylesheet_directory() . '/libs/helpers.php';
 //* Add Image helper Functions
 include_once get_stylesheet_directory() . '/libs/image_functions.php';
 
+/*add_action( 'pre_get_posts', 'venus_set_archive_category' );
+
+function venus_set_archive_category($query) {
+
+	if( !is_admin() && is_archive() && $query->is_main_query() ) {
+		$cat = get_field('archive_category', 'options');
+		if($cat){
+			$query->set('cat', intval($cat));
+		}
+	}
+}*/
