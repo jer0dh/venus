@@ -67,14 +67,19 @@
 }
 
 .header-image .site-title > a {
-  background: url(../images/logo.png) no-repeat;
+  background: url(../images/logo3.png) no-repeat;
   background-position: left center;
-background-size: contain;
+  background-size: contain;
   min-height: to-em($header-image-min-height);
   width: 100%;
   display: inline-block;
-}
 
+}
+.fixed-header.header-image .site-title > a {
+  min-height: #{  to-em($header-image-min-height) / 1.5 };
+
+
+}
 .site-description {
   font-size: 1.6rem;
   font-weight: 300;
