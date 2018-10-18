@@ -70,7 +70,7 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
 							<?php echo wp_get_attachment_image( get_post_thumbnail_id( $id ), 'full' ); ?>
 
                         </div>
-                        <div class="portfolio-feature-desc col-md-4 order-3 order-md-1">
+                        <div class="portfolio-feature-desc col-md-5 order-3 order-md-1">
                             <h3><?php echo get_the_title( $id ); ?></h3>
                             <div>
 								<?php echo $content; ?>
@@ -78,31 +78,35 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
 
                         </div>
 
-                        <div class="portfolio-feature-meta col-md-4 order-1 order-md-2">
-							<?php if ( $category ): ?>
-                                <div>
-                                    Type: <?php echo wp_kses_post( venus_get_categories( $category ) ); ?>
-                                </div>
-							<?php endif; ?>
-							<?php if ( $external_url ): ?>
-                                <div>
-                                    URL:
-                                    <a href="<?php echo esc_url( $external_url ); ?>"><?php echo esc_url( $external_url ); ?></a>
-                                </div>
-							<?php endif; ?>
-							<?php if ( $company ): ?>
-                                <div>
-                                    Company: <?php echo wp_kses_post( $company ); ?>
-                                </div>
-							<? endif; ?>
-
+                        <div class="portfolio-feature-meta col-md-3 order-1 order-md-2">
+                            <div>
+								<?php if ( $category ): ?>
+                                    <div>
+                                        <strong>Type:</strong> <?php echo wp_kses_post( venus_get_categories( $category ) ); ?>
+                                    </div>
+								<?php endif; ?>
+								<?php if ( $external_url ): ?>
+                                    <div>
+                                        <strong>URL:</strong>
+                                        <a href="<?php echo esc_url( $external_url ); ?>"><?php echo esc_url( $external_url ); ?></a>
+                                    </div>
+								<?php endif; ?>
+								<?php if ( $company ): ?>
+                                    <div>
+                                        <strong>Company:</strong> <?php echo wp_kses_post( $company ); ?>
+                                    </div>
+								<? endif; ?>
+                            </div>
                         </div>
 
                     </div><!-- row -->
-                    <div class="row portfolio-feature-screenshots">
+                    <div class="row justify-content-center portfolio-feature-screenshots">
 						<?php if ( $screenshots ):  // Using animateHeight.js to collapse screenshot container?>
-                            <button class="btn btn-primary" data-collapse="#portfolio_feature_<?php echo intval($id); ?>"
-                            data-open-text="Close Screenshots" data-closed-text="More Screenshots">More Screenshots</button>
+                            <button class="btn btn-primary"
+                                    data-collapse="#portfolio_feature_<?php echo intval( $id ); ?>"
+                                    data-open-text="Close Screenshots" data-closed-text="More Screenshots">More
+                                Screenshots
+                            </button>
 						<?php endif; ?>
                     </div>
                 </div>

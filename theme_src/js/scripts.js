@@ -10,6 +10,10 @@
         console.log( 'starting scripts.js');
         //endRemoveIf(production)
 
+        $(document).on('click', '.close-button', function(e) {
+            e.preventDefault();
+
+        })
 
         /* Sticky NAV code
         --------------------------------------------------------------------

@@ -55,6 +55,8 @@ function custom_attributes_content( $attributes ) {
 	return $attributes;
 }
 
+add_filter( 'genesis_link_post_title', '__return_false');
+
 
 
 add_filter( 'wp_nav_menu_objects', 'venus_multipage_menu_links', 10, 2 );

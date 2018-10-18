@@ -9,8 +9,8 @@
         gridMoreInfo = '.portfolio-grid-more-info',
         mustacheTemplate = '#portfolio_grid_template',
         expandedGridItem = '.expanded-grid-item',
-        gridItemOpenClass = '.grid-item-open';
-
+        gridItemOpenClass = '.grid-item-open',
+        container = '.portfolio-grid-more-info';
 
     /**
      * This looks for a right place to put the moreInfo section.  It will place it below the row of
@@ -40,14 +40,14 @@
         //and insert cloned expanded section right before
         $nextGridItems.each(function (i, article) {
             const $article = $(article);
-            if (gridItemOffset < $article.offset().top){
+            if (gridItemOffset < $article.offset().top) {
                 $article.before($clonedMoreInfoSection);
                 found = true;
                 placeDownSection($clonedMoreInfoSection);
                 return false;
             }
         });
-        if(!found) { //on last row, append after last article
+        if (!found) { //on last row, append after last article
             $(gridItem).last().after($clonedMoreInfoSection);
             placeDownSection($clonedMoreInfoSection);
         }
@@ -60,7 +60,7 @@
      * @param $el
      */
     function placeDownSection($el) {
-        themeJs.loadSection($el, function() {
+        themeJs.loadSection($el, function () {
             themeJs.scrollToSection($el);
             themeJs.expandSection($el[0]);
         });
@@ -78,10 +78,8 @@
 // on click of Portfolio-grid-feature -
         // determine location to put extra info
         // move portfolio-grid-more-info section to that location
-            // create close button - changes toggleCollapse
-            // listen for button on screenshots to load via ajax
-
-        console.log('section-portfolio-grid script');
+        // create close button - changes toggleCollapse
+        // listen for button on screenshots to load via ajax
 
         $(parent).on('click', gridThumbnail, function (e) {
             e.preventDefault();
@@ -93,7 +91,7 @@
             let id = $gridItem.attr('data-id');
             let $expandedSection = $gridItem.siblings('[data-id=' + id + ']');
             if ($expandedSection.length > 0) {
-                themeJs.collapseSection($expandedSection[0], function() {
+                themeJs.collapseSection($expandedSection[0], function () {
                     $expandedSection.appendTo($gridItem);
                     $gridItem.removeClass(gridItemOpenClass);
                 });
@@ -104,26 +102,14 @@
 
             //Close existing grid-items more info expanded section, then open new
             $expandedSection = $gridItem.siblings(gridMoreInfo);
-            if( $expandedSection.length > 0) {
-/*
-              This 'worked' but because the openGridItem is called asynchronously the scroll to
-              would scroll too far as the previous expanded section collapsed.  So will assume only
-              one expandedSection
+            if ($expandedSection.length > 0) {
 
-                $expandedSection.each(function() {
-                   const $this = $(this);
-                   const id = $this.attr('data-id');
-                    const $parent = $this.siblings('[data-id=' + id + ']');
-                    themeJs.collapseSection(this, function() {
-                        $this.appendTo($parent);
-                    })
-                });*/
                 const id = $expandedSection.attr('data-id');
 
                 // get gridItem where expanded section will be put back
                 const $parent = $expandedSection.siblings('[data-id=' + id + ']');
 
-                themeJs.collapseSection($expandedSection[0], function() {
+                themeJs.collapseSection($expandedSection[0], function () {
                     $expandedSection.appendTo($parent);
                     $parent.removeClass(gridItemOpenClass);
 
@@ -139,9 +125,62 @@
 
             }
 
+        });
 
+        // Clicking More slides button
+        $(container).on('click', 'button', function (e) {
 
+            e.preventDefault();
+            let $this = $(this);
 
+            let $container = $this.closest(container);
+
+            let $slides = $container.find(slides);
+
+            // do slides already exist
+            if ($slides.length > 0) {
+                console.log('slides already exist');
+                $this.trigger('toggleCollapse'); //expand or collapse section see animateHeight.js
+                return;
+            }
+
+            // Slides do not exist so load them
+
+            // Get id of portfolio
+            let $parent = $this.closest(container);
+            console.log($parent);
+            let id = $this.data('id');
+            console.log(id);
+
+            // Get screenshots using REST
+
+            $.ajax({
+                url: wpLocal.restApi + 'portfolio/' + id,
+
+                beforeSend: function () {
+                    $this.addClass('ajax-loading');
+                },
+
+                success: function (data) {
+
+                    // Apply Mustache template to data
+                    let output = Mustache.render($(mustacheTemplate).text(),
+                        data);
+
+                    // add the rendered output and when images are finished loading expand section
+                    $parent.append(output).imagesLoaded().done(function () {
+                        $this.trigger('toggleCollapse'); //initial markup has data-collapsed set to true so this will expand section see animateHeight.js
+                    });
+                },
+
+                always: function () {
+                    $this.removeClass('ajax-loading');
+                },
+
+                error: function (x, msg) {
+                    console.log('Could not load from server:' + msg);
+                }
+            })
 
         });
     })

@@ -1,12 +1,35 @@
 .section-portfolio-feature {
+  padding: 0;
 
+  .portfolio-feature {
+    padding: to-em($section-tb-padding) 0;
+  }
 
+  .portfolio-feature-screenshots {
+    padding: #{ to-em($section-tb-padding) / 2 } 0;
+
+  }
   .portfolio-feature-screenshots-container {
     transition: height 0.4s;
     overflow: hidden;
 
   }
 
+  @include media('>md') {
+    .portfolio-feature-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
+      & > div {
+        font-size: 0.8em;
+        margin: 0.6em;
+        padding: 0.6em;
+        border: 1px solid $red;
+        background: rgba($white, 0.98);
+      }
+
+    }
+  }
 
 }

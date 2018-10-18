@@ -1,5 +1,9 @@
 .section-portfolio-grid {
 
+  .portfolio-grid-item {
+    padding: 1.5em;
+    cursor: pointer;
+  }
   .portfolio-grid-more-info {
     transition: height 0.4s;
     overflow: hidden;
@@ -10,5 +14,25 @@
   .portfolio-grid-feature img {
     width: 100%;
   }
+  .portfolio-grid-screenshots-container {
+    transition: height 0.4s;
+    overflow: hidden;
 
+  }
+  @include media('>md') {
+    .portfolio-feature-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > div {
+        font-size: 0.8em;
+        margin: 0.6em;
+        padding: 0.6em;
+        border: 1px solid $red;
+        background: rgba($white, 0.98);
+      }
+
+    }
+  }
 }

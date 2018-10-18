@@ -164,3 +164,21 @@ img.alignright,
 .entry-content .wp-video {
   margin: 0 0 to-em(28px);
 }
+
+.close-button {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: dashicons, sans-serif;
+    content: "\f158";
+    font-size: 3em;
+    color: $black;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    cursor: pointer;
+  }
+}
