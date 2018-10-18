@@ -38,8 +38,8 @@
 
 }
 .fixed-header .site-header > .wrap {
-  padding-top: #{$site-header-padding-top - 10px};
-  padding-bottom: #{$site-header-padding-bottom - 10px};
+  padding-top: #{$site-header-padding-top - 20px};
+  padding-bottom: #{$site-header-padding-bottom - 20px};
 }
 @include media('>mobileMenu') {
 

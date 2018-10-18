@@ -58,13 +58,31 @@
 }
 
 .site-header .search-form {
-  margin-top: to-em(12px);
+ // margin-top: to-em(12px);
   text-align: center;
+
+
+  input {
+    padding: calc(0.5em + 5px) 0.5em;
+    font-size: 1rem;
+    font-weight: bold;
+    color: $red;
+    background: rgba($white, 0.98);
+    border: 1px solid $red;
+    @include placeholder {
+      color: rgba($red, 0.5);
+    }
+  }
+  input:focus {
+    @include placeholder {
+      color: transparent;
+    }
+  }
 }
 
 .entry-content .search-form,
 .site-header .search-form {
-  width: 50%;
+ // width: 50%;
 }
 
 .genesis-nav-menu .search input[type="submit"],

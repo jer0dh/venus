@@ -30,5 +30,25 @@
 
 .footer-widget-area {
   flex: 1;
+  border: 1px solid $red;
+  background: rgba($white,0.98);
+  padding: 1.5em;
+  margin: 0.5em;
+
+}
+
+.footer-widgets p {
+  margin: 0;
+
+  img {
+    margin: 0 auto;
+  }
+
+}
+.footer-widgets-3 {
+  img {
+    width: 80%;
+
+  }
 }
 

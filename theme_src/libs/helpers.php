@@ -43,14 +43,15 @@ function venus_breadcrumbs_args( $args ) {
 // Change category crumbs to always be the default category link
 add_filter( 'genesis_post_crumb', 'venus_post_crumb' );
 function venus_post_crumb( $crumb ) {
-    $archive_category = get_field( 'archive_category', 'options');
-    if($archive_category) {
-        $term = get_term( $archive_category );
-        if(!is_wp_error($term)) {
-            $crumb = sprintf('<a href="%s">%s</a>', esc_url(get_category_link($term->term_id)),esc_textarea( $term->name));
-        }
-    }
-    return $crumb;
+	$archive_category = get_field( 'archive_category', 'options' );
+	if ( $archive_category ) {
+		$term = get_term( $archive_category );
+		if ( ! is_wp_error( $term ) ) {
+			$crumb = sprintf( '<a href="%s">%s</a>', esc_url( get_category_link( $term->term_id ) ), esc_textarea( $term->name ) );
+		}
+	}
+
+	return $crumb;
 }
 
 /**
@@ -66,6 +67,26 @@ function venus_add_categories() {
 		<?php endforeach; ?>
     </ul>
 	<?php
+}
+
+//* Customize search form input box text
+add_filter( 'genesis_search_text', 'jhts_search_text' );
+function jhts_search_text( $text ) {
+	return esc_attr( 'Search this knowledgebase...' );
+}
+
+//* Tell search to only search in default archive category
+add_action( 'pre_get_posts', 'venus_set_archive_category' );
+
+function venus_set_archive_category($query) {
+
+	if( !is_admin() && is_search() && $query->is_main_query() ) {
+		$cat = get_field('archive_category', 'options');
+		if($cat){
+			$query->set('cat', intval($cat));
+		}
+	}
+	return $query;
 }
 
 
