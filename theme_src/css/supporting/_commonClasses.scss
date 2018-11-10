@@ -58,13 +58,31 @@
 }
 
 .site-header .search-form {
-  margin-top: to-em(12px);
+ // margin-top: to-em(12px);
   text-align: center;
+
+
+  input {
+    padding: calc(0.5em + 5px) 0.5em;
+    font-size: 1rem;
+    font-weight: bold;
+    color: $red;
+    background: rgba($white, 0.98);
+    border: 1px solid $red;
+    @include placeholder {
+      color: rgba($red, 0.5);
+    }
+  }
+  input:focus {
+    @include placeholder {
+      color: transparent;
+    }
+  }
 }
 
 .entry-content .search-form,
 .site-header .search-form {
-  width: 50%;
+ // width: 50%;
 }
 
 .genesis-nav-menu .search input[type="submit"],
@@ -145,4 +163,32 @@ img.alignright,
 .entry-content .wp-playlist,
 .entry-content .wp-video {
   margin: 0 0 to-em(28px);
+}
+
+.close-button-container {
+  position: relative;
+
+  .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: dashicons, sans-serif;
+    font-size: 3em;
+    color: $black;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1;
+    &:after {
+      content: "\f158";
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 20%;
+      background: $white;
+      box-shadow: -5px 5px 10px 1px rgba(0, 0, 0, 0.35);
+    }
+  }
 }

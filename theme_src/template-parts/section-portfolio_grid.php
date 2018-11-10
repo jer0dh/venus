@@ -78,33 +78,52 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
                                 <h3><?php echo get_the_title( $id ); ?></h3>
                             </div>
                         </div>
-                        <div class="portfolio-grid-more-info">
-							<?php echo wp_get_attachment_image( get_post_thumbnail_id( $id ), 'portfolio_grid' ); ?>
-                            <div class="portfolio-grid-meta">
-								<?php if ( $category ): ?>
+                        <div class="portfolio-grid-more-info close-button-container" data-id="<?php echo intval( $id ); ?>">
+                            <div class="close-button"></div>
+                            <div class="row">
+                                <div class="portfolio-feature-feature col-md-4 order-0">
+                                    <noscript>
+                                        <img src="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id( $id ), 'medium' ); ?>"
+                                             alt/>
+                                    </noscript>
+									<?php echo wp_get_attachment_image( get_post_thumbnail_id( $id ), 'full' ); ?>
+
+                                </div>
+                                <div class="portfolio-feature-desc col-md-5 order-3 order-md-1">
+                                    <h3><?php echo get_the_title( $id ); ?></h3>
                                     <div>
-                                        Type: <?php echo wp_kses_post( venus_get_categories( $category ) ); ?>
+										<?php echo $content; ?>
                                     </div>
-								<?php endif; ?>
-								<?php if ( $external_url ): ?>
+
+                                </div>
+
+                                <div class="portfolio-feature-meta col-md-3 order-1 order-md-2">
                                     <div>
-                                        URL:
-                                        <a href="<?php echo esc_url( $external_url ); ?>"><?php echo esc_url( $external_url ); ?></a>
+										<?php if ( $category ): ?>
+                                            <div>
+                                                <strong>Type:</strong> <?php echo wp_kses_post( venus_get_categories( $category ) ); ?>
+                                            </div>
+										<?php endif; ?>
+										<?php if ( $external_url ): ?>
+                                            <div>
+                                                <strong>URL:</strong>
+                                                <a href="<?php echo esc_url( $external_url ); ?>"><?php echo esc_url( $external_url ); ?></a>
+                                            </div>
+										<?php endif; ?>
+										<?php if ( $company ): ?>
+                                            <div>
+                                                <strong>Company:</strong> <?php echo wp_kses_post( $company ); ?>
+                                            </div>
+										<? endif; ?>
                                     </div>
-								<?php endif; ?>
-								<?php if ( $company ): ?>
-                                    <div>
-                                        Company: <?php echo wp_kses_post( $company ); ?>
-                                    </div>
-								<? endif; ?>
-                            </div>
-                            <div class="portfolio-grid-content">
-								<?php echo wp_kses_post( $content ); ?>
-                            </div>
-                            <div class="row portfolio-grid-screenshots">
+                                </div>
+
+                            </div><!-- row -->
+                            <div class="row justify-content-center portfolio-grid-screenshots">
 								<?php if ( $screenshots ):  // Using animateHeight.js to collapse screenshot container?>
                                     <button class="btn btn-primary"
                                             data-collapse="#portfolio_grid_<?php echo intval( $id ); ?>"
+                                            data-id="<?php echo intval( $id ); ?>"
                                             data-open-text="Close Screenshots" data-closed-text="More Screenshots">More
                                         Screenshots
                                     </button>
@@ -129,7 +148,7 @@ if ( $venus_portfolio_grid_instance === 1 ) {
 	echo '</script>';
 
 	echo '<script type="text/template" id="portfolio_grid_template">';
-//	include( get_stylesheet_directory() . '/template-parts/section-portfolio_grid.mustache' );
+	include( get_stylesheet_directory() . '/template-parts/section-portfolio_grid.mustache' );
 	echo '</script>';
 
 

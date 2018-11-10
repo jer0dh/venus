@@ -7,6 +7,23 @@ function venus_multipage_custom_loop() {
 
 	global $wp_query;
 
+	// Set some hooks
+	//* add wrap around page titles (entry-header)
+	add_action( 'genesis_entry_header', 'venus_add_wrap_open', 6 );
+	add_action( 'genesis_entry_header', 'venus_add_wrap_close', 14 );
+
+	//add edit link if logged in
+	add_action( 'genesis_entry_header', 'venus_edit_link', 13);
+
+	// add id attribute to each page
+	add_filter( 'genesis_attr_entry', 'custom_attributes_content' );
+
+
+	/* We want full page content, not excerpt */
+	remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+	add_action( 'genesis_entry_content', 'venus_do_page_content' );
+	remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
+
 	// Get a list of pages to show from multipage menu
 	$pages = wp_get_nav_menu_items( 'multipage' );
 
@@ -24,6 +41,23 @@ function venus_multipage_custom_loop() {
 	wp_reset_query();
 
 }
+ function venus_edit_link() {
+	echo do_shortcode('[post_edit]');
+ }
+/**
+ * Add the id to the article tag
+ */
+
+function custom_attributes_content( $attributes ) {
+
+	$attributes['id'] = sanitize_title_with_dashes( get_the_title() );
+
+	return $attributes;
+}
+
+add_filter( 'genesis_link_post_title', '__return_false');
+
+
 
 add_filter( 'wp_nav_menu_objects', 'venus_multipage_menu_links', 10, 2 );
 /**

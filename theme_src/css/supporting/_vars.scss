@@ -52,13 +52,13 @@ $site-header-min-height: 160px;
 $site-header-padding-top: 20px;
 $site-header-padding-bottom: 20px;
 
-$header-image-min-height: 20px;
+$header-image-min-height: 40px;
 $sidebar-gutter: 20px;
 
 $main-margin-bottom: 60px;
 
 
-$section-tb-padding: 70px;
+$section-tb-padding: 50px;
 
 
 /* Grid - Columns
@@ -92,7 +92,7 @@ $p_bottom_margin: 2.8rem;
 // Color system
 //
 
-$white:    #fff;
+$white:    #ffffff; //#F0E7D8;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
 $gray-300: #dee2e6;
@@ -102,7 +102,7 @@ $gray-600: #6c757d;
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
-$black:    #000;
+$black:    #1E1A1D;
 
 $grays: (
                         "100": $gray-100,
@@ -116,9 +116,9 @@ $grays: (
                         "900": $gray-900
         );
 
-
-$blue:    #007bff;
-$indigo:  #6610f2;
+$brown: #8C705F;
+$blue:    #3A405A;
+$indigo:  #1F0318;
 $purple:  #6f42c1;
 $pink:    #e83e8c;
 $red:     #a7233a;
@@ -144,8 +144,8 @@ $colors: (
                         "gray-dark":  $gray-800
                 );
 
-$primary:       $blue;
-$secondary:     $gray-600;
+$primary:       $red;
+$secondary:     $indigo;
 $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;
@@ -178,7 +178,7 @@ $color-border-default: #dddddd;
   -------------------------------------------------------- */
 
 $btn-default-color:           $white;
-$btn-default-bg:               $blue;
+$btn-default-bg:               $red;
 $btn-padding-y:               0.6rem;
 $btn-padding-x:               1rem;
 $btn-line-height:             1.5;

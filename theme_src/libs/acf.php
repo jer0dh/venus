@@ -12,8 +12,8 @@
 /* adding a little more security to ACF fields by sanitizing input */
 /* not sanitizing input whose field name contains 'raw_html' */
 /* from: http://www.advancedcustomfields.com/resources/acf_form/#security */
-add_filter( 'acf/update_value', 'ssp_kses_post', 10, 3 );
-function ssp_kses_post( $value, $post_id = null, $field = null ) {
+add_filter( 'acf/update_value', 'venus_kses_post', 10, 3 );
+function venus_kses_post( $value, $post_id = null, $field = null ) {
 
 
 	if ( isset( $field ) && strpos( $field['name'], 'raw_html' ) > - 1 ) {
@@ -58,7 +58,7 @@ if( function_exists('acf_add_options_page') ) {
 		'capability' => 'edit_posts',
 		'redirect'   => true
 	) );
-	acf_add_options_sub_page( array(
+/*	acf_add_options_sub_page( array(
 		'page_title'  => 'General Settings',
 		'menu_title'  => 'General Settings',
 		'parent_slug' => 'theme-settings'
@@ -72,7 +72,7 @@ if( function_exists('acf_add_options_page') ) {
 		'page_title'  => 'Social Media',
 		'menu_title'  => 'Social Media',
 		'parent_slug' => 'theme-settings'
-	) );
+	) );*/
 
 }
 
@@ -112,47 +112,6 @@ function acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
 	return $title;
 
 }
-
-function ssp_load_background_field_choices( $field ) {
-
-	// reset choices
-	$field['choices'] = array();
-
-
-	// if has rows
-	if ( have_rows( 'theme_backgrounds', 'option' ) ) {
-
-		// while has rows
-		while ( have_rows( 'theme_backgrounds', 'option' ) ) {
-
-			// instantiate row
-			the_row();
-
-
-			// vars
-			$value = get_sub_field( 'class' );
-			$label = get_sub_field( 'name' );
-
-
-			// append to choices
-			$field['choices'][ $value ] = $label;
-
-		}
-
-	}
-
-
-	return $field;
-
-}
-
-// For each select name (must be unique) add a filter
-add_filter( 'acf/load_field/name=3c_background_select', 'ssp_load_background_field_choices' );
-add_filter( 'acf/load_field/name=swb1_background_select', 'ssp_load_background_field_choices' );
-add_filter( 'acf/load_field/name=swb2_background_select', 'ssp_load_background_field_choices' );
-
-
-// END Code to add titles to flex layout on backend
 
 // BEGIN CODE TO ADD THE ABILITY TO SEARCH ACF fields using WP Search form on the frontend
 

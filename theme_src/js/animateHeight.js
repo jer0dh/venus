@@ -98,6 +98,7 @@
                     setToggleText(this, false);
                 } else {
                     collapseSection(section)
+                    section.setAttribute('data-collapsed', 'true');
                     setToggleText(this, true);
                 }
             }

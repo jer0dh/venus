@@ -128,7 +128,7 @@ add_theme_support( 'post-thumbnails' );
 
 add_theme_support( 'align-wide' );
 
-/* Add support for 3-column footer widgets
+//* Add support for 3-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 3 );
 
 
@@ -140,15 +140,15 @@ add_action( 'genesis_footer', 'gtl_do_footer' );
 
 function gtl_do_footer(){
 
-	$before_year = get_the_field_without_wpautop( 'footer_before', 'options');
+/*	$before_year = get_the_field_without_wpautop( 'footer_before', 'options');
 	$after_year = get_the_field_without_wpautop( 'footer_after', 'options');
-	$login_url = get_home_url() . '/login';
+	$login_url = get_home_url() . '/login';*/
 
-	echo '<div class="footer-copyright"><div class="wrap">' . wp_kses_post($before_year) . do_shortcode('[footer_copyright copyright=""] ') . wp_kses_post($after_year) .'</div></div>';
+	echo '<div class="footer-copyright"><div class="wrap">' . do_shortcode('[footer_copyright ] ') . '</div></div>';
 
 }
 
-*/
+
 
 add_theme_support( 'genesis-structural-wraps', array(
 	'header',
@@ -192,6 +192,9 @@ add_action( 'genesis_header', 'genesis_do_nav', 11 );
 //Images
 add_image_size('portfolio_grid', 450, 350, ['top', 'center']);
 
+//* Add acf
+include_once get_stylesheet_directory() . '/libs/acf.php';
+
 //* Add helpers
 include_once get_stylesheet_directory() . '/libs/multipage.php';
 
@@ -207,3 +210,9 @@ include_once get_stylesheet_directory() . '/libs/helpers.php';
 //* Add Image helper Functions
 include_once get_stylesheet_directory() . '/libs/image_functions.php';
 
+
+//add_action('genesis_before_loop', 'venus_test');
+function venus_test() {
+	global $wp_query;
+		var_dump($wp_query);
+}

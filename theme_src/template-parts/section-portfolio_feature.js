@@ -8,15 +8,18 @@
 
         $(container).on('click', 'button', function (e) {
 
+            console.log('feature-scripts started');
             e.preventDefault();
             let $this = $(this);
 
-            let $container = $this.closest(container);
+            let $container = $this.closest(parent);
+            console.log($container);
 
-            let $slides = $(slides);
+            let $slides = $container.find(slides);
 
             // do slides already exist
             if ($slides.length > 0) {
+                console.log('feature - slides already exist');
                 $this.trigger('toggleCollapse'); //expand or collapse section see animateHeight.js
                 return;
             }
@@ -24,8 +27,7 @@
             // Slides do not exist so load them
 
             // Get id of portfolio
-            let $parent = $this.closest(parent);
-            let id = $parent.data('id');
+            let id = $container.data('id');
 
             // Get screenshots using REST
 

@@ -3,12 +3,52 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .site-footer {
-  border-top: 1px solid $color-border-default;
-  font-size: 1rem;
+  font-size: 0.7rem;
   line-height: 1;
-  padding: to-em(40px) 0;
+  padding: to-em(10px) 0;
+  color: $white;
+  background-color: $black;
 
+  text-align: center;
   p {
     margin-bottom: 0;
   }
 }
+.footer-widgets {
+  background: #eee;
+}
+.footer-widgets .wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  @include media('>md') {
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+}
+
+.footer-widget-area {
+  flex: 1;
+  border: 1px solid $red;
+  background: rgba($white,0.98);
+  padding: 1.5em;
+  margin: 0.5em;
+
+}
+
+.footer-widgets p {
+  margin: 0;
+
+  img {
+    margin: 0 auto;
+  }
+
+}
+.footer-widgets-3 {
+  img {
+    width: 80%;
+
+  }
+}
+
