@@ -10,30 +10,36 @@
         console.log( 'starting scripts.js');
         //endRemoveIf(production)
 
-/*        $(document).on('click', '.close-button', function(e) {
-            e.preventDefault();
+        /**
+         * Run Prettify
+         */
+        PR.prettyPrint();
 
-            const $this = $(this);
-            const $container = $this.closest('.close-button-container');
 
-            // if this container is using the animateHeight code then use that to close it.
-            if($container.attr('data-collapsed') === 'false') {
+        /*        $(document).on('click', '.close-button', function(e) {
+                    e.preventDefault();
 
-                const id = $container.attr('id');
-                if(id) {
-                    // if there is a button assigned to open and close this container, the trigger event on it
-                    $button = $('[data-collapse="#' + id + '"]');
-                    if($button.length > 0) {
-                        $button.trigger('toggleCollapse');
-                        return;
+                    const $this = $(this);
+                    const $container = $this.closest('.close-button-container');
+
+                    // if this container is using the animateHeight code then use that to close it.
+                    if($container.attr('data-collapsed') === 'false') {
+
+                        const id = $container.attr('id');
+                        if(id) {
+                            // if there is a button assigned to open and close this container, the trigger event on it
+                            $button = $('[data-collapse="#' + id + '"]');
+                            if($button.length > 0) {
+                                $button.trigger('toggleCollapse');
+                                return;
+                            }
+                        }
+                        themeJs.collapseSection($container[0]);
+
+                    } else {
+                        $container.hide();
                     }
-                }
-                themeJs.collapseSection($container[0]);
-
-            } else {
-                $container.hide();
-            }
-        })*/
+                })*/
 
         /* Sticky NAV code
         --------------------------------------------------------------------
