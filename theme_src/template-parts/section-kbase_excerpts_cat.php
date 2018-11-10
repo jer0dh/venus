@@ -22,6 +22,9 @@ $category = get_field( 'category' );
 
 add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10, 2 );
 
+$args = [
+        'posts_per_page' => -1,
+];
 ?>
 
     <section <?php echo $attributes; ?>>
