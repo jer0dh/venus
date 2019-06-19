@@ -1,6 +1,6 @@
 <?php
 
-
+add_filter( 'genesis_link_post_title', '__return_true');
 $archive_category = get_field( 'archive_category', 'options' );
 
 if ( $archive_category ) {
