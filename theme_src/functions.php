@@ -210,6 +210,9 @@ include_once get_stylesheet_directory() . '/libs/helpers.php';
 //* Add Image helper Functions
 include_once get_stylesheet_directory() . '/libs/image_functions.php';
 
+//* Add Bootstrap structural wrap
+include_once get_stylesheet_directory() . '/libs/add_bootstrap_structural_wrap.php';
+
 
 //add_action('genesis_before_loop', 'venus_test');
 function venus_test() {
