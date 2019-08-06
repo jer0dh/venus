@@ -42,22 +42,6 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
 	}
 }
 ?>
-<div>
-    <h1>hello</h1>
-    <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Link with href
-        </a>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Button with data-target
-        </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-    </div>
-</div>
 
     <section <?php echo $attributes; ?>>
         <div class="wrap">
@@ -94,7 +78,7 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
 
                         </div>
 
-                        <div class="portfolio-feature-meta col-md-3 order-1 order-md-2">
+                        <div class="portfolio-feature-meta col-md-3 order-1 order-md-2 mb-4">
                             <div>
 								<?php if ( $category ): ?>
                                     <div>
@@ -119,7 +103,7 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
 	                <?php if ( $screenshots ):  // Using animateHeight.js to collapse screenshot container?>
 
                     <div class="row justify-content-center portfolio-feature-screenshots">
-                        <div class="col-12">
+                        <div class="col-12 mb-3 text-center">
                             <button class="btn btn-primary"
                                     type="button"
                                     data-toggle="collapse"

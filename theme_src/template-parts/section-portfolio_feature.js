@@ -1,13 +1,32 @@
 (function ($) {
 
+
+    function setToggleText(t, isCollapsed){
+        const openText = t.getAttribute('data-open-text');
+
+        if(isCollapsed) {
+            const closedText = t.getAttribute('data-closed-text');
+            if( closedText && closedText !== '' ) {
+                t.innerHTML = closedText;
+            }
+        } else {
+            if( openText && openText !== '' ) {
+                t.innerHTML = openText;
+            }
+
+        }
+    }
+
     $(document).ready(function () {
         const slides = '.portfolio-feature-slides',
             mustacheTemplate = '#portfolio_features_template';
 
         $(slides).on('show.bs.collapse', function (e) {
-
-            console.log(e);
             let $this = $(this);
+
+            const buttonTarget = $this.attr('id');
+            setToggleText( $( '[data-target="#' + buttonTarget+'"]')[0], false );
+
             if( $this.hasClass('slides-not-loaded') ) {
 
                 const id = $this.data('id');
@@ -47,5 +66,11 @@
 
 
         });
+
+        $(slides).on('hide.bs.collapse', function() {
+            const $this = $(this);
+            const buttonTarget = $this.attr('id');
+            setToggleText( $( '[data-target="#' + buttonTarget+'"]')[0], true )
+        })
     })
 })(jQuery);

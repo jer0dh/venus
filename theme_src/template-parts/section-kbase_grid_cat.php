@@ -20,7 +20,7 @@ $attributes .= ' class="' . esc_attr( $classes ) . '"';
 $title         = get_sub_field( 'title' );
 $category      = get_sub_field( 'category' );
 $page          = 1;
-$maximum_posts = get_sub_field( 'maximum_posts' ) ? get_sub_field( 'maximum_posts' ) : 5;
+$maximum_posts = get_sub_field( 'maximum_posts' ) ? get_sub_field( 'maximum_posts' ) : get_option( 'posts_per_page' );
 
 add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10, 2 );
 
@@ -56,7 +56,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10,
                             <a href="<?php the_permalink(); ?>">
 								<?php echo wp_get_attachment_image( venus_get_image_id( get_the_ID() ), 'full' ) ?>
                             </a>
-                            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                            <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 
                         </div>
 
@@ -67,7 +67,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10,
 
 			wp_reset_postdata(); ?>
 
-			<?php echo do_shortcode( wpautop( wp_kses_post( $content ) ) ); ?>
+			<?php //echo do_shortcode( wpautop( wp_kses_post( $content ) ) ); ?>
         </div>
     </section>
 
