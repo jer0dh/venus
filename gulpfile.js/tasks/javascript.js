@@ -64,7 +64,7 @@ gulp.task('js-concat-scripts', function(cb) {
         .pipe(sourcemaps.init())
         .pipe(removeCode(config.removeCodeOptions))
         .pipe(noVendorFilter)
-        .pipe(babel({ presets: ['env']}))
+        .pipe(babel())
         .pipe(noVendorFilter.restore)
         .pipe(concat(config.jsConcatenatedScriptsName))
         .pipe(gulp.dest( config.destination + '/js' ))

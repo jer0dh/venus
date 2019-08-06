@@ -42,6 +42,22 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
 	}
 }
 ?>
+<div>
+    <h1>hello</h1>
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Link with href
+        </a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+    </div>
+</div>
 
     <section <?php echo $attributes; ?>>
         <div class="wrap">
@@ -100,15 +116,25 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
                         </div>
 
                     </div><!-- row -->
+	                <?php if ( $screenshots ):  // Using animateHeight.js to collapse screenshot container?>
+
                     <div class="row justify-content-center portfolio-feature-screenshots">
-						<?php if ( $screenshots ):  // Using animateHeight.js to collapse screenshot container?>
+                        <div class="col-12">
                             <button class="btn btn-primary"
-                                    data-collapse="#portfolio_feature_<?php echo intval( $id ); ?>"
-                                    data-open-text="Close Screenshots" data-closed-text="More Screenshots">More
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#portfolio_feature_<?php echo intval( $id ); ?>"
+                                    data-open-text="Close Screenshots" data-closed-text="More Screenshots"
+                                    aria-expanded="false" aria-controls="portfolio_feature_<?php echo intval( $id ); ?>">More
                                 Screenshots
                             </button>
-						<?php endif; ?>
+                        </div>
+                        <div class="col-12">
+                            <div class="portfolio-feature-slides collapse slides-not-loaded" id="portfolio_feature_<?php echo intval( $id );?>"
+                            data-id="<?php echo intval( $id ); ?>"></div>
+                        </div>
                     </div>
+	                <?php endif; ?>
                 </div>
 			<?php endforeach; ?>
 

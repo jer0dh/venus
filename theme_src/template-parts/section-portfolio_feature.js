@@ -1,63 +1,50 @@
 (function ($) {
 
     $(document).ready(function () {
-        const container = '.portfolio-feature-screenshots',
-            parent = 'div.portfolio-feature',
-            slides = '.portfolio-feature-screenshots-container',
+        const slides = '.portfolio-feature-slides',
             mustacheTemplate = '#portfolio_features_template';
 
-        $(container).on('click', 'button', function (e) {
+        $(slides).on('show.bs.collapse', function (e) {
 
-            console.log('feature-scripts started');
-            e.preventDefault();
+            console.log(e);
             let $this = $(this);
+            if( $this.hasClass('slides-not-loaded') ) {
 
-            let $container = $this.closest(parent);
-            console.log($container);
+                const id = $this.data('id');
 
-            let $slides = $container.find(slides);
+                // Get screenshots using REST
 
-            // do slides already exist
-            if ($slides.length > 0) {
-                console.log('feature - slides already exist');
-                $this.trigger('toggleCollapse'); //expand or collapse section see animateHeight.js
-                return;
+                $.ajax({
+                    url: wpLocal.restApi + 'portfolio/' + id,
+
+                    beforeSend: function() {
+                        $this.addClass('ajax-loading');
+                    },
+
+                    success: function (data) {
+
+                        $this.removeClass('slides-not-loaded');
+                        // Apply Mustache template to data
+                        const output = Mustache.render($(mustacheTemplate).text(),
+                            data);
+
+                        // add the rendered output and when images are finished loading expand section
+                        $this.append(output).imagesLoaded().done(function () {
+                            // $this.trigger('toggleCollapse'); //initial markup has data-collapsed set to true so this will expand section see animateHeight.js
+                        });
+                    },
+
+                    always: function() {
+                        $this.removeClass('ajax-loading');
+                    },
+
+                    error: function(x, msg) {
+                        console.log('Could not load from server:' + msg);
+                    }
+                })
             }
 
-            // Slides do not exist so load them
 
-            // Get id of portfolio
-            let id = $container.data('id');
-
-            // Get screenshots using REST
-
-            $.ajax({
-                url: wpLocal.restApi + 'portfolio/' + id,
-
-                beforeSend: function() {
-                    $this.addClass('ajax-loading');
-                },
-
-                success: function (data) {
-
-                    // Apply Mustache template to data
-                    let output = Mustache.render($(mustacheTemplate).text(),
-                        data);
-
-                    // add the rendered output and when images are finished loading expand section
-                    $container.append(output).imagesLoaded().done(function () {
-                        $this.trigger('toggleCollapse'); //initial markup has data-collapsed set to true so this will expand section see animateHeight.js
-                    });
-                },
-
-                always: function() {
-                    $this.removeClass('ajax-loading');
-                },
-
-                error: function(x, msg) {
-                    console.log('Could not load from server:' + msg);
-                }
-            })
 
         });
     })
