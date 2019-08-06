@@ -52,7 +52,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'venus_image_markup_lazy', 10,
 						$cquery->the_post();
 						?>
 
-                        <div class="col-md-3">
+                        <div class="col-sm-6 col-md-3 mb-4">
                             <a href="<?php the_permalink(); ?>">
 								<?php echo wp_get_attachment_image( venus_get_image_id( get_the_ID() ), 'full' ) ?>
                             </a>

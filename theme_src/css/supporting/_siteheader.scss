@@ -9,7 +9,7 @@
 
 }
 
-.site-header > .wrap {
+.site-header > .container > .row > .col-12 {
   padding-top: $site-header-padding-top;
   padding-bottom: $site-header-padding-bottom;
   display: grid;
@@ -37,13 +37,13 @@
   }
 
 }
-.fixed-header .site-header > .wrap {
+.fixed-header .site-header > .container > .row > .col-12 {
   padding-top: #{$site-header-padding-top - 20px};
   padding-bottom: #{$site-header-padding-bottom - 20px};
 }
 @include media('>mobileMenu') {
 
-  .site-header > .wrap {
+  .site-header > .container > .row > .col-12 {
     grid-template-columns: 20% 80%; //80% instead of auto for IE11
     grid-template-rows: 100%;
 
