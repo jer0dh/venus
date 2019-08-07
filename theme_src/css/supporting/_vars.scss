@@ -194,10 +194,9 @@ $btn-border-width:            1px;
 ------------------------------------- */
 
 $global-font-size: 16px;
-$font-default: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 $line-height-default: 1.625;
 
-$font_mbempire_book: 'mb_empire_bookregular', sans-serif;
+$font_main: 'Muli', sans-serif;
+$font_mono: 'Inconsolata', monospace;
 
-
-
+$font-default: $font_main;

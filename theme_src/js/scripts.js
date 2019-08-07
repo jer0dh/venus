@@ -13,7 +13,7 @@
         /**
          * Run Prettify
          */
-        PR.prettyPrint();
+       // PR.prettyPrint();
 
 
         /*        $(document).on('click', '.close-button', function(e) {

@@ -34,7 +34,7 @@ function gtl_enqueue_scripts_styles() {
 
 	wp_enqueue_style( 'gtl_css', get_stylesheet_directory_uri() . '<% if(production){%>/css/style.min.css<% } else { %>/css/style.css<% } %>', array(), $version );
 
-	wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Muli:400,600,700,800', array() );
+	wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Inconsolata:400,700|Muli:400,700&display=swap', array() );
 
 	//$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '<% if(production){%>.min<% } %>';  //Gulptask in dev environment will put in '.min' if dev is set for production
 	$suffix = VENUS_JS_SUFFIX;
