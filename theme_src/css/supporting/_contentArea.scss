@@ -32,7 +32,26 @@
   code {
     font-family: $font_mono;
     color: inherit;
+    background-color: #f1f1f1;
+    padding: 0 0.2em;
   }
+
+  pre  {
+    padding: 1em;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    overflow-x: auto;
+ //   white-space: pre-wrap;
+
+    code {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+}
+
+.wrap-code {
+  white-space: pre-wrap;
 }
 /* ## Entry Meta
 --------------------------------------------- */

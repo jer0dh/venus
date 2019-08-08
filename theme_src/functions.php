@@ -219,3 +219,8 @@ function venus_test() {
 	global $wp_query;
 		var_dump($wp_query);
 }
+
+add_action( 'wp_head', 'studiopress_code');
+function studiopress_code() {
+	echo '<!-- ' . 'B4E9769D-B932-4C55-BA24-4F66EAA5CF62' . ' -->';
+}

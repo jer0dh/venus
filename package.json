@@ -1,6 +1,6 @@
 {
   "name": "theme-from-venus",
-  "version": "1.0.3-1055",
+  "version": "1.0.3-1076",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
@@ -54,7 +54,7 @@
     "> 0.1%",
     "last 4 versions"
   ],
-  "//": "Order the dependencies how you want them concatenated",
+  "//": "node_modules/bootstrap/dist/js/bootstrap.js",
   "templateName": "Theme From Venus",
   "templateUri": "https://jhtechservices.com",
   "author": "Jerod Hammerstein",
@@ -79,6 +79,5 @@
     "theme_src/js/lazyLoading.js",
     "theme_src/js/scrollTo.js",
     "theme_src/js/scripts.js"
-  ],
-  "//":    "node_modules/bootstrap/dist/js/bootstrap.js"
+  ]
 }

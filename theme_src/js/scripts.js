@@ -10,9 +10,14 @@
         console.log( 'starting scripts.js');
         //endRemoveIf(production)
 
-        /**
-         * Run Prettify
-         */
+        // if html comments inside code element, encode comment tags
+        $('code').each( function() {
+            const $this = $(this);
+            let content = $this.html();
+            content = content.replace('<!--', '&lt;!--');
+            content = content.replace('-->', '--&gt;')
+            $this.html(content);
+        })
        // PR.prettyPrint();
 
 
