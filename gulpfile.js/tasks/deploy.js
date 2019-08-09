@@ -1,8 +1,11 @@
-const gulp = require('gulp');
-const config = require('../config/');
+const {config} = require('../config/');
 const deployRemote = require('../lib/deployRemote');
 
 
-gulp.task('deploy-all', function() {
-    return deployRemote(config.srcFolder + '/**/*', '/');
-});
+function deploy( cb ){
+    deployRemote( config.destFolder, '/');
+
+    cb();
+}
+
+exports.deploy = deploy;

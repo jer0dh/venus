@@ -8,6 +8,6 @@ sftp*.json
 *.map
 images/
 theme_dest/
-theme_backup/
 scratch.*
 gulpfile.old.js
+dest/

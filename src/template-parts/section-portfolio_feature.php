@@ -95,7 +95,7 @@ if ( ! function_exists( 'venus_get_categories' ) ) {
                                     <div>
                                         <strong>Company:</strong> <?php echo wp_kses_post( $company ); ?>
                                     </div>
-								<? endif; ?>
+								<?php endif; ?>
                             </div>
                         </div>
 
